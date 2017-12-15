@@ -15,6 +15,7 @@
 		CEB7A1C41FE3A61200189B77 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEB7A1C21FE3A61200189B77 /* Main.storyboard */; };
 		CEB7A1C61FE3A61200189B77 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEB7A1C51FE3A61200189B77 /* Assets.xcassets */; };
 		CEB7A1C91FE3A61200189B77 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEB7A1C71FE3A61200189B77 /* LaunchScreen.storyboard */; };
+		CEB7A1D61FE4546E00189B77 /* rudolph.atlas in Resources */ = {isa = PBXBuildFile; fileRef = CEB7A1D51FE4546E00189B77 /* rudolph.atlas */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		CEB7A1C51FE3A61200189B77 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CEB7A1C81FE3A61200189B77 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CEB7A1CA1FE3A61200189B77 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CEB7A1D51FE4546E00189B77 /* rudolph.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = rudolph.atlas; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,17 +62,26 @@
 		CEB7A1B71FE3A61200189B77 /* FinalProject */ = {
 			isa = PBXGroup;
 			children = (
-				CEB7A1B81FE3A61200189B77 /* AppDelegate.swift */,
 				CEB7A1BA1FE3A61200189B77 /* GameScene.sks */,
 				CEB7A1BC1FE3A61200189B77 /* Actions.sks */,
 				CEB7A1BE1FE3A61200189B77 /* GameScene.swift */,
 				CEB7A1C01FE3A61200189B77 /* GameViewController.swift */,
 				CEB7A1C21FE3A61200189B77 /* Main.storyboard */,
-				CEB7A1C51FE3A61200189B77 /* Assets.xcassets */,
-				CEB7A1C71FE3A61200189B77 /* LaunchScreen.storyboard */,
 				CEB7A1CA1FE3A61200189B77 /* Info.plist */,
+				CEB7A1D51FE4546E00189B77 /* rudolph.atlas */,
+				CEB7A1D01FE3A65200189B77 /* Supporting Files */,
 			);
 			path = FinalProject;
+			sourceTree = "<group>";
+		};
+		CEB7A1D01FE3A65200189B77 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CEB7A1C51FE3A61200189B77 /* Assets.xcassets */,
+				CEB7A1B81FE3A61200189B77 /* AppDelegate.swift */,
+				CEB7A1C71FE3A61200189B77 /* LaunchScreen.storyboard */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -132,6 +143,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEB7A1D61FE4546E00189B77 /* rudolph.atlas in Resources */,
 				CEB7A1C41FE3A61200189B77 /* Main.storyboard in Resources */,
 				CEB7A1BB1FE3A61200189B77 /* GameScene.sks in Resources */,
 				CEB7A1C61FE3A61200189B77 /* Assets.xcassets in Resources */,
