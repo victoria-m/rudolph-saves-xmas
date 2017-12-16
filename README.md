@@ -1,6 +1,6 @@
 # Final Project
 ## Summary
-I changed the theme of this project, but it’s still a very similar game to the one I intended to make. In this game Rudolph the Red-Nosed Reindeer needs to keep his schedule free so he can help deliver presents on Christmas. This means he needs to avoid those pesky professors who are trying to give him more homework.
+I changed the theme of this project, but it’s still a very similar game to the one I intended to make. In this game, Rudolph the Red-Nosed Reindeer needs to keep his schedule free so he can help Santa deliver presents on Christmas. This means he needs to avoid those pesky professors who are trying to give him more homework.
 
 I learned a about SpriteKit game development while making this, but I also realized I may have been a bit overly-ambitious with my project proposal. So I ended up making a game with the following features:
 	1. You can move Rudolph around by clicking on your desired location.
@@ -17,6 +17,7 @@ I learned a about SpriteKit game development while making this, but I also reali
 
 ## Points
 **Total points: 42**
+
 I changed the way the points were allocated because after using SpriteKit I realized I wouldn’t be able to use the UIKit the way I had intended and a lot of the points required using UIKit (so I changed around some things).
 
 * Network request/response - 3 pts
@@ -28,3 +29,17 @@ I changed the way the points were allocated because after using SpriteKit I real
 * home button, start game button, foreground, and background)
 * UIController/SKScenes - 3 pts (GameViewController, GameScene, StartScene)
 * Animations - 9 pts (rudolph walk, professor walk, throwing projectiles)
+
+## Game Assets
+All assets used were royalty-free.
+
+* Christmas sprites and music
+	* [Renne Cadeaux TUTO by Dev Du Dimanche](https://developpeusedudimanche.itch.io/renne-cadeau-tuto)
+* Wizard sprite
+	* [The “Fuck Wasting Art” Art Package by Andrew Connelly](https://cog_software.itch.io/fwa-artpackage)
+* GUI
+	* [Button Asset Pack by adwitr](https://adwitr.itch.io/button-asset-pack)
+
+## References
+* Walking animation
+	* [Sprite Kit Animations and Texture Atlases in Swift](https://www.raywenderlich.com/89222/sprite-kit-animations-texture-atlases-swift)
