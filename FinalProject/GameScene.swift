@@ -12,6 +12,10 @@ class GameScene: SKScene {
     var rudolph: SKSpriteNode!
     var rudolphWalkingFrames: [SKTexture]!
     
+    // enemy sprite
+    var professor: SKSpriteNode!
+    var professorWalkingFrames: [SKTexture]!
+    
     // projectile button sprite
     var projectileButton = SKSpriteNode(imageNamed: "candy cane")
     var projectile = SKSpriteNode(imageNamed: "candy cane")
@@ -20,13 +24,11 @@ class GameScene: SKScene {
     var background = SKSpriteNode(imageNamed: "background")
     var foreground = SKSpriteNode(imageNamed: "foreground")
     
-    // music
+    // music and sound effects
     var backgroundMusic = SKAudioNode(fileNamed: "background music.wav")
+    var shootSoundEffect = SKAudioNode(fileNamed: "shoot.wav")
 
     override func didMove(to view: SKView) {
-        // add the background music
-        addChild(backgroundMusic)
-        
         // center the background and add it to the scene
         background.position = CGPoint(x: frame.size.width / 2, y: frame.size.height / 2)
         background.anchorPoint = CGPoint(x: 0.5, y: 0.5)
@@ -39,6 +41,13 @@ class GameScene: SKScene {
         print(foreground.position)
         foreground.size.width = self.size.width
         addChild(foreground)
+        
+        // configure sound effect
+        shootSoundEffect.autoplayLooped = false
+        
+        // add the music
+        addChild(backgroundMusic)
+        addChild(shootSoundEffect)
         
         // set up projectile button design
         projectileButton.position = CGPoint(x: self.frame.maxX - 90, y: self.frame.minY + 150)
@@ -75,7 +84,63 @@ class GameScene: SKScene {
         rudolph.yScale = 1.5
         addChild(rudolph)
         
+        spawnProfessor()
         walkingRudolph()
+    }
+    
+    func spawnProfessor() {
+        // set up the professor walking frames
+        let professorAnimatedAtlas = SKTextureAtlas(named: "professor")
+        var profWalkFrames = [SKTexture]()
+        
+        let numProfImages = professorAnimatedAtlas.textureNames.count
+        
+        // add each image from the rudolph atlas folder to the walkframes array
+        for index in 1 ... numProfImages {
+            let profTextureName = "professor\(index)"
+            profWalkFrames.append(professorAnimatedAtlas.textureNamed(profTextureName))
+        }
+        
+        professorWalkingFrames = profWalkFrames
+        
+        // get the first walking frame and position it in the center of the screen
+        let firstProfFrame = professorWalkingFrames[0]
+        professor = SKSpriteNode(texture: firstProfFrame)
+        
+        professor.position = CGPoint(x: self.frame.maxX - 50, y: self.frame.minY + 60)
+        professor.xScale = 2.3
+        professor.yScale = 2.3
+        addChild(professor)
+        
+        walkingProfessor()
+        
+        print("moving prof...")
+        
+        // 3
+        let moveAction = SKAction.moveTo(x: rudolph.position.x, duration: 6.0)
+        
+        // 4
+        let doneAction = (SKAction.run({
+            print("Professor finished moving")
+            self.removeFromParent()
+        }))
+        
+//        self.addChild(professor)
+        
+        // 5
+        let moveActionWithDone = (SKAction.sequence([moveAction, doneAction]))
+        
+        professor.run(moveActionWithDone, withKey: "professor moved")
+    }
+    
+    func walkingProfessor() {
+        // this is the walk action method for the professor sprite
+        professor.run(SKAction.repeatForever(
+            SKAction.animate(with: professorWalkingFrames,
+                             timePerFrame: 0.2,
+                             resize: false,
+                             restore: true)),
+                    withKey:"walkingInPlaceProfessor")
     }
     
     func walkingRudolph() {
@@ -94,7 +159,7 @@ class GameScene: SKScene {
     }
     
     func shootProjectile() {
-        var projectile = SKSpriteNode(imageNamed: "candy cane")
+        let projectile = SKSpriteNode(imageNamed: "candy cane")
         
         // starting position
         projectile.position = CGPoint(x: rudolph.position.x + 40, y: rudolph.position.y)
@@ -102,7 +167,7 @@ class GameScene: SKScene {
         
         // 3
         let moveAction = SKAction.moveTo(x: self.size.width + 50, duration: 1.0)
-        
+
         // 4
         let doneAction = (SKAction.run({
             print("Projectile finished moving")
@@ -113,6 +178,8 @@ class GameScene: SKScene {
         
         // 5
         let moveActionWithDone = (SKAction.sequence([moveAction, doneAction]))
+        
+        shootSoundEffect.run(SKAction.play())
         projectile.run(moveActionWithDone, withKey: "shot projectile")
     }
     
@@ -121,7 +188,6 @@ class GameScene: SKScene {
         for touch in touches {
             let location = touch.location(in: self)
             let touchNode = atPoint(location)
-//            print("\(touchNode.name)")
             
             // check if the projectile button was touched
             if touchNode.name == "projectile button" {
@@ -130,6 +196,8 @@ class GameScene: SKScene {
                 return
             }
         }
+        
+        // Rudolph movement:
         
         // 1
         let touch = touches.first as! UITouch
@@ -179,52 +247,6 @@ class GameScene: SKScene {
         let moveActionWithDone = (SKAction.sequence([moveAction, doneAction]))
         rudolph.run(moveActionWithDone, withKey:"rudolphMoving")
     }
-
-//
-//    func touchDown(atPoint pos : CGPoint) {
-//        if let n = self.spinnyNode?.copy() as! SKShapeNode? {
-//            n.position = pos
-//            n.strokeColor = SKColor.green
-//            self.addChild(n)
-//        }
-//    }
-//
-//    func touchMoved(toPoint pos : CGPoint) {
-//        if let n = self.spinnyNode?.copy() as! SKShapeNode? {
-//            n.position = pos
-//            n.strokeColor = SKColor.blue
-//            self.addChild(n)
-//        }
-//    }
-//
-//    func touchUp(atPoint pos : CGPoint) {
-//        if let n = self.spinnyNode?.copy() as! SKShapeNode? {
-//            n.position = pos
-//            n.strokeColor = SKColor.red
-//            self.addChild(n)
-//        }
-//    }
-//
-//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        if let label = self.label {
-//            label.run(SKAction.init(named: "Pulse")!, withKey: "fadeInOut")
-//        }
-//
-//        for t in touches { self.touchDown(atPoint: t.location(in: self)) }
-//    }
-//
-//    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        for t in touches { self.touchMoved(toPoint: t.location(in: self)) }
-//    }
-//
-//    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        for t in touches { self.touchUp(atPoint: t.location(in: self)) }
-//    }
-//
-//    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        for t in touches { self.touchUp(atPoint: t.location(in: self)) }
-//    }
-//
     
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
