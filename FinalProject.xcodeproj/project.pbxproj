@@ -12,6 +12,7 @@
 		CE11C2D31FE4B2560035BA81 /* professor.atlas in Resources */ = {isa = PBXBuildFile; fileRef = CE11C2D21FE4B2550035BA81 /* professor.atlas */; };
 		CE11C2D51FE4B8D60035BA81 /* StartScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE11C2D41FE4B8D60035BA81 /* StartScene.swift */; };
 		CE11C2D71FE4B9750035BA81 /* StartScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = CE11C2D61FE4B9750035BA81 /* StartScene.sks */; };
+		CE11C2DE1FE4FEFE0035BA81 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = CE11C2DD1FE4FEFE0035BA81 /* README.md */; };
 		CEB7A1B91FE3A61200189B77 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB7A1B81FE3A61200189B77 /* AppDelegate.swift */; };
 		CEB7A1BB1FE3A61200189B77 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = CEB7A1BA1FE3A61200189B77 /* GameScene.sks */; };
 		CEB7A1BD1FE3A61200189B77 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = CEB7A1BC1FE3A61200189B77 /* Actions.sks */; };
@@ -29,6 +30,7 @@
 		CE11C2D21FE4B2550035BA81 /* professor.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = professor.atlas; sourceTree = "<group>"; };
 		CE11C2D41FE4B8D60035BA81 /* StartScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartScene.swift; sourceTree = "<group>"; };
 		CE11C2D61FE4B9750035BA81 /* StartScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = StartScene.sks; sourceTree = "<group>"; };
+		CE11C2DD1FE4FEFE0035BA81 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = FinalProject/README.md; sourceTree = SOURCE_ROOT; };
 		CEB7A1B51FE3A61200189B77 /* FinalProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinalProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEB7A1B81FE3A61200189B77 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEB7A1BA1FE3A61200189B77 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -107,6 +109,30 @@
 			path = Main;
 			sourceTree = "<group>";
 		};
+		CE11C2DF1FE4FF080035BA81 /* Readme */ = {
+			isa = PBXGroup;
+			children = (
+				CE11C2DD1FE4FEFE0035BA81 /* README.md */,
+			);
+			name = Readme;
+			sourceTree = "<group>";
+		};
+		CE11C2E01FE4FF1C0035BA81 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				CEB7A1C01FE3A61200189B77 /* GameViewController.swift */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		CE11C2E11FE4FF2C0035BA81 /* Actions */ = {
+			isa = PBXGroup;
+			children = (
+				CEB7A1BC1FE3A61200189B77 /* Actions.sks */,
+			);
+			name = Actions;
+			sourceTree = "<group>";
+		};
 		CEB7A1AC1FE3A61200189B77 = {
 			isa = PBXGroup;
 			children = (
@@ -130,8 +156,9 @@
 				CEB7A1D01FE3A65200189B77 /* Supporting Files */,
 				CE11C2D91FE4B9CB0035BA81 /* Scenes */,
 				CE11C2DB1FE4BA280035BA81 /* Storyboards */,
-				CEB7A1BC1FE3A61200189B77 /* Actions.sks */,
-				CEB7A1C01FE3A61200189B77 /* GameViewController.swift */,
+				CE11C2DF1FE4FF080035BA81 /* Readme */,
+				CE11C2E01FE4FF1C0035BA81 /* View Controllers */,
+				CE11C2E11FE4FF2C0035BA81 /* Actions */,
 				CEB7A1CA1FE3A61200189B77 /* Info.plist */,
 				CE11C2D21FE4B2550035BA81 /* professor.atlas */,
 				CEB7A1D51FE4546E00189B77 /* rudolph.atlas */,
@@ -217,6 +244,7 @@
 				CEB7A1C61FE3A61200189B77 /* Assets.xcassets in Resources */,
 				CE11C2D11FE4AB960035BA81 /* shoot.wav in Resources */,
 				CEB7A1C91FE3A61200189B77 /* LaunchScreen.storyboard in Resources */,
+				CE11C2DE1FE4FEFE0035BA81 /* README.md in Resources */,
 				CEB7A1BD1FE3A61200189B77 /* Actions.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
