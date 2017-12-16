@@ -2,15 +2,31 @@ import SpriteKit
 import GameplayKit
 
 // reference: https://www.raywenderlich.com/89222/sprite-kit-animations-texture-atlases-swift
+// assets (royalty-free:
+    // game sprites: https://developpeusedudimanche.itch.io/renne-cadeau-tuto
+    // GUI: https://legacyretroapp.itch.io/2d-gui-asset-legacyretro
 
 class GameScene: SKScene {
     
+    // player sprite
     var rudolph: SKSpriteNode!
     var rudolphWalkingFrames: [SKTexture]!
+    
+    // projectile button sprite
+    var projectileButton = SKSpriteNode(imageNamed: "candy cane")
+    var projectile = SKSpriteNode(imageNamed: "candy cane")
+    
+    // background and foreground
     var background = SKSpriteNode(imageNamed: "background")
     var foreground = SKSpriteNode(imageNamed: "foreground")
     
+    // music
+    var backgroundMusic = SKAudioNode(fileNamed: "background music.wav")
+
     override func didMove(to view: SKView) {
+        // add the background music
+        addChild(backgroundMusic)
+        
         // center the background and add it to the scene
         background.position = CGPoint(x: frame.size.width / 2, y: frame.size.height / 2)
         background.anchorPoint = CGPoint(x: 0.5, y: 0.5)
@@ -19,10 +35,23 @@ class GameScene: SKScene {
         addChild(background)
         
         // set the foreground's position to the bottom of the screen and add it to the scene
-        foreground.position = CGPoint(x: self.frame.midX, y: self.frame.maxY)
+        foreground.position = CGPoint(x: self.frame.midX, y: self.frame.maxY - 65)
+        print(foreground.position)
         foreground.size.width = self.size.width
         addChild(foreground)
-
+        
+        // set up projectile button design
+        projectileButton.position = CGPoint(x: self.frame.maxX - 90, y: self.frame.minY + 150)
+        projectileButton.xScale = 2
+        projectileButton.yScale = 2
+        projectileButton.name = "projectile button"
+        addChild(projectileButton)
+        
+        // set up projectile
+        projectile.physicsBody = SKPhysicsBody(rectangleOf: projectile.size)
+        // add this, to ensure dynamism:
+        projectile.physicsBody?.isDynamic = true
+        
         // set up the rudolph walking frames
         let rudolphAnimatedAtlas = SKTextureAtlas(named: "rudolph")
         var walkFrames = [SKTexture]()
@@ -41,9 +70,9 @@ class GameScene: SKScene {
         let firstFrame = rudolphWalkingFrames[0]
         rudolph = SKSpriteNode(texture: firstFrame)
         
-        rudolph.position = CGPoint(x: self.frame.midX, y: self.frame.midY)
-        rudolph.xScale = 2
-        rudolph.yScale = 2
+        rudolph.position = CGPoint(x: self.frame.minX + 50, y: self.frame.minY + 60)
+        rudolph.xScale = 1.5
+        rudolph.yScale = 1.5
         addChild(rudolph)
         
         walkingRudolph()
@@ -58,20 +87,54 @@ class GameScene: SKScene {
                                          restore: true)),
                        withKey:"walkingInPlaceRudolph")
     }
-
-
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-
-    }
     
     func rudolphMoveEnded() {
         rudolph.removeAllActions()
+        walkingRudolph()
     }
     
+    func shootProjectile() {
+        var projectile = SKSpriteNode(imageNamed: "candy cane")
+        
+        // starting position
+        projectile.position = CGPoint(x: rudolph.position.x + 40, y: rudolph.position.y)
+        projectile.zPosition = 5
+        
+        // 3
+        let moveAction = SKAction.moveTo(x: self.size.width + 50, duration: 1.0)
+        
+        // 4
+        let doneAction = (SKAction.run({
+            print("Projectile finished moving")
+            projectile.removeFromParent()
+        }))
+        
+        self.addChild(projectile)
+        
+        // 5
+        let moveActionWithDone = (SKAction.sequence([moveAction, doneAction]))
+        projectile.run(moveActionWithDone, withKey: "shot projectile")
+    }
+    
+    
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        for touch in touches {
+            let location = touch.location(in: self)
+            let touchNode = atPoint(location)
+//            print("\(touchNode.name)")
+            
+            // check if the projectile button was touched
+            if touchNode.name == "projectile button" {
+                print("touched projectile")
+                shootProjectile()
+                return
+            }
+        }
+        
         // 1
         let touch = touches.first as! UITouch
-        let location = touch.location(in: self)
+        // allow rudolph to move left and right, but not up and down
+        let location = CGPoint(x: touch.location(in: self).x, y: self.frame.minY + 60)
         var multiplierForDirection: CGFloat
         
         // 2
@@ -88,6 +151,7 @@ class GameScene: SKScene {
         if moveDifference.x < 0 { multiplierForDirection = 1.0 }
         else { multiplierForDirection = -1.0 }
         
+        // turn rudolph around depending on the direction he is headed
         rudolph.xScale = -1 * fabs(rudolph.xScale) * multiplierForDirection
         
         // 1
