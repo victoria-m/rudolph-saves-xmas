@@ -1,13 +1,14 @@
 import SpriteKit
 import GameplayKit
 
-// reference: https://www.raywenderlich.com/89222/sprite-kit-animations-texture-atlases-swift
+// references:
+    // animation: https://www.raywenderlich.com/89222/sprite-kit-animations-texture-atlases-swift
 // assets (royalty-free:
-    // game sprites: https://developpeusedudimanche.itch.io/renne-cadeau-tuto
-    // GUI: https://legacyretroapp.itch.io/2d-gui-asset-legacyretro
+    // christmas sprites: https://developpeusedudimanche.itch.io/renne-cadeau-tuto
+    // wizard sprite: https://cog_software.itch.io/fwa-artpackage
+    // GUI: https://adwitr.itch.io/button-asset-pack
 
 class GameScene: SKScene {
-    
     // player sprite
     var rudolph: SKSpriteNode!
     var rudolphWalkingFrames: [SKTexture]!
@@ -29,7 +30,7 @@ class GameScene: SKScene {
     var shootSoundEffect = SKAudioNode(fileNamed: "shoot.wav")
     
     // button
-    var homeButton = SKSpriteNode(imageNamed: "home button")
+    var homeButton: SKSpriteNode!
 
     override func didMove(to view: SKView) {
         self.physicsWorld.contactDelegate = self
@@ -42,18 +43,38 @@ class GameScene: SKScene {
         setupCandyCaneProjectileButton()
         setupRudolph()
         
-        // spawn professor and start walking animations
+        // spawn professor and start rudolph walking animation
         spawnProfessor()
         walkingRudolph()
     }
     
     func setupButtons() {
-        homeButton.position = CGPoint(x: self.frame.maxX - 50, y: self.frame.maxY - 40)
-        homeButton.xScale = 0.09
-        homeButton.yScale = 0.09
-        homeButton.zPosition = 7
-        homeButton.name = "home button"
-        addChild(homeButton)
+        // get home button image using a url session
+        let imageUrl = "https://i.imgur.com/vQTT7Ip.png"
+        
+        let url = URL(string: imageUrl)
+        URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
+            if error != nil {
+                print(error!)
+                return
+            }
+            
+            DispatchQueue.main.async {
+                // initialize homebutton using the image
+                let image = UIImage(data: data!)
+                let texture = SKTexture(image: image!)
+                self.homeButton = SKSpriteNode(texture: texture)
+                
+                // set up home button design
+                self.homeButton.position = CGPoint(x: self.frame.maxX - 50, y: self.frame.maxY - 40)
+                self.homeButton.xScale = 0.09
+                self.homeButton.yScale = 0.09
+                self.homeButton.zPosition = 7
+                self.homeButton.name = "home button"
+                
+                self.addChild(self.homeButton)
+            }
+        }).resume()
     }
     
     func setupSound() {
@@ -103,10 +124,12 @@ class GameScene: SKScene {
         
         rudolph.name = "rudolph"
         
+        // set up Rudolph's position
         rudolph.position = CGPoint(x: self.frame.minX + 50, y: self.frame.minY + 60)
         rudolph.xScale = 1.5
         rudolph.yScale = 1.5
         rudolph.zPosition = 10
+        
         addChild(rudolph)
     }
     
@@ -156,22 +179,17 @@ class GameScene: SKScene {
         
         walkingProfessor()
         
-        // 3
         let moveAction = SKAction.moveTo(x: self.frame.minX - 50, duration: 6.0)
+        let doneAction = SKAction.run({ self.removeFromParent()})
         
-        // 4
-        let doneAction = (SKAction.run({
-            self.removeFromParent()
-        }))
-        
-        // 5
+        // combine move and done actions
         let moveActionWithDone = (SKAction.sequence([moveAction, doneAction]))
         
         professor.run(moveActionWithDone, withKey: "professor moved")
     }
     
+    // starts the professor's walk animation
     func walkingProfessor() {
-        // this is the walk action method for the professor sprite
         professor.run(SKAction.repeatForever(
             SKAction.animate(with: professorWalkingFrames,
                              timePerFrame: 0.2,
@@ -180,8 +198,8 @@ class GameScene: SKScene {
                     withKey:"walkingInPlaceProfessor")
     }
     
+    // starts Rudolph's walk animation
     func walkingRudolph() {
-        // this is the walk action method for the rudolph sprite
         rudolph.run(SKAction.repeatForever(
             SKAction.animate(with: rudolphWalkingFrames,
                                          timePerFrame: 0.2,
@@ -190,6 +208,7 @@ class GameScene: SKScene {
                        withKey:"walkingInPlaceRudolph")
     }
     
+    // once rudolph's done moving, remove his actions and start walking in place
     func rudolphMoveEnded() {
         rudolph.removeAllActions()
         walkingRudolph()
@@ -209,17 +228,12 @@ class GameScene: SKScene {
         candyCaneProjectile.physicsBody?.isDynamic = true
         candyCaneProjectile.physicsBody?.affectedByGravity = false
         
-        // 3
         let moveAction = SKAction.moveTo(x: self.size.width + 50, duration: 1.0)
-
-        // 4
-        let doneAction = (SKAction.run({
-            candyCaneProjectile.removeFromParent()
-        }))
+        let doneAction = SKAction.run({candyCaneProjectile.removeFromParent()})
         
         self.addChild(candyCaneProjectile)
         
-        // 5
+        // combine move and done actions
         let moveActionWithDone = (SKAction.sequence([moveAction, doneAction]))
         
         shootSoundEffect.run(SKAction.play())
@@ -257,78 +271,54 @@ class GameScene: SKScene {
             }
         }
         
-        // Rudolph movement:
-        
-        // 1
-        let touch = touches.first as! UITouch
+        // Rudolph's movement:
+        guard let touch = touches.first else { return }
         // allow rudolph to move left and right, but not up and down
         let location = CGPoint(x: touch.location(in: self).x, y: self.frame.minY + 60)
-        var multiplierForDirection: CGFloat
         
-        // 2
+        var multiplierForDirection: CGFloat
         let rudolphVelocity = self.frame.size.width / 3.0
         
-        // 3
         let moveDifference = CGPoint(x: location.x - rudolph.position.x, y: location.y - rudolph.position.y)
         let distanceToMove = sqrt(moveDifference.x * moveDifference.x + moveDifference.y * moveDifference.y)
         
-        // 4
         let moveDuration = distanceToMove / rudolphVelocity
         
-        // 5
         if moveDifference.x < 0 { multiplierForDirection = 1.0 }
         else { multiplierForDirection = -1.0 }
         
         // turn rudolph around depending on the direction he is headed
         rudolph.xScale = -1 * fabs(rudolph.xScale) * multiplierForDirection
         
-        // 1
-        if (rudolph.action(forKey: "rudolphMoving") != nil) {
-            //stop just the moving to a new location, but leave the walking legs movement running
-            rudolph.removeAction(forKey: "rudolphMoving")
-        }
+        // stop moving to a new location if about to move again, but continue the walking animation
+        if (rudolph.action(forKey: "rudolphMoving") != nil) { rudolph.removeAction(forKey: "rudolphMoving") }
         
-        // 2
-        if (rudolph.action(forKey: "walkingInPlaceRudolph") == nil) {
-            //if legs are not moving go ahead and start them
-            walkingRudolph()
-        }
+        // if not walking, then start walking
+        if (rudolph.action(forKey: "walkingInPlaceRudolph") == nil) { walkingRudolph() }
         
-        // 3
-        let moveAction = (SKAction.move(to: location, duration:(Double(moveDuration))))
+        let moveAction = SKAction.move(to: location, duration:(Double(moveDuration)))
+        let doneAction = SKAction.run({ self.rudolphMoveEnded() })
         
-        // 4
-        let doneAction = (SKAction.run({
-            print("Animation Completed")
-            self.rudolphMoveEnded()
-        }))
-        
-        // 5
+        // combine move and done actions
         let moveActionWithDone = (SKAction.sequence([moveAction, doneAction]))
         rudolph.run(moveActionWithDone, withKey:"rudolphMoving")
     }
     
     override func update(_ currentTime: TimeInterval) {
-        // Called before each frame is rendered
+        // called before each frame is rendered
     }
 }
 
 extension GameScene: SKPhysicsContactDelegate {
     func didBegin(_ contact: SKPhysicsContact) {
-        print("did begin")
-        guard let nodeA = contact.bodyA.node else { return }
-        guard let nodeB = contact.bodyB.node else { return }
-        
+        // if collision between professor and projectile
         if contact.bodyA.node?.name == "candy cane projectile" {
-            collisionBetween(projectile: nodeA, object: nodeB)
+            collisionBetween(projectile: (contact.bodyA.node)!, object: (contact.bodyB.node)!)
         }
     }
     
     func collisionBetween(projectile: SKNode, object: SKNode) {
-        print("there was a collision")
-        
         if object.name == "professor" {
-            print("collision between prof and projectile")
             destroy(object: object)
             destroy(object: projectile)
         }
