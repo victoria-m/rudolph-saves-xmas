@@ -21,6 +21,8 @@ I learned a lot about SpriteKit game development, but I also realized I may have
 
 I changed the way the points were allocated because after using SpriteKit I realized I wouldn’t be able to use the UIKit the way I had intended and a lot of the points required using UIKit (so I changed around some things).
 
+Also, it would be great if I could get a couple extra points for the background music and sound effects!
+
 * Network request/response - 3 pts
 * GCD - 2 pts
 * Threads - 2 pts
