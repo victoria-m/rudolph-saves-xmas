@@ -17,8 +17,8 @@ class GameScene: SKScene {
     var professorWalkingFrames: [SKTexture]!
     
     // projectile button sprite
-    var projectileButton = SKSpriteNode(imageNamed: "candy cane")
-    var projectile = SKSpriteNode(imageNamed: "candy cane")
+    var candyCaneProjectileButton = SKSpriteNode(imageNamed: "candy cane")
+    var candyCaneProjectile = SKSpriteNode(imageNamed: "candy cane")
     
     // background and foreground
     var background = SKSpriteNode(imageNamed: "background")
@@ -27,40 +27,62 @@ class GameScene: SKScene {
     // music and sound effects
     var backgroundMusic = SKAudioNode(fileNamed: "background music.wav")
     var shootSoundEffect = SKAudioNode(fileNamed: "shoot.wav")
+    
+    // button
+    var homeButton = SKSpriteNode(imageNamed: "home button")
 
     override func didMove(to view: SKView) {
-        // center the background and add it to the scene
-        background.position = CGPoint(x: frame.size.width / 2, y: frame.size.height / 2)
-        background.anchorPoint = CGPoint(x: 0.5, y: 0.5)
-        background.size.height = self.size.height
-        background.size.width = self.size.width
-        addChild(background)
+        self.physicsWorld.contactDelegate = self
+        self.physicsBody?.isDynamic = true
         
-        // set the foreground's position to the bottom of the screen and add it to the scene
-        foreground.position = CGPoint(x: self.frame.midX, y: self.frame.maxY - 65)
-        print(foreground.position)
-        foreground.size.width = self.size.width
-        addChild(foreground)
+        // initial setup
+        setupBackgroundAndForeground()
+        setupButtons()
+        setupSound()
+        setupCandyCaneProjectileButton()
+        setupRudolph()
         
+        // spawn professor and start walking animations
+        spawnProfessor()
+        walkingRudolph()
+    }
+    
+    func setupButtons() {
+        homeButton.position = CGPoint(x: self.frame.maxX - 50, y: self.frame.maxY - 40)
+        homeButton.xScale = 0.09
+        homeButton.yScale = 0.09
+        homeButton.zPosition = 7
+        homeButton.name = "home button"
+        addChild(homeButton)
+    }
+    
+    func setupSound() {
         // configure sound effect
         shootSoundEffect.autoplayLooped = false
         
         // add the music
         addChild(backgroundMusic)
         addChild(shootSoundEffect)
+    }
+    
+    func setupBackgroundAndForeground() {
+        // center the background and add it to the scene
+        background.position = CGPoint(x: frame.size.width / 2, y: frame.size.height / 2)
+        background.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+        background.size.height = self.size.height
+        background.size.width = self.size.width
+        background.zPosition = 0
+        addChild(background)
         
-        // set up projectile button design
-        projectileButton.position = CGPoint(x: self.frame.maxX - 90, y: self.frame.minY + 150)
-        projectileButton.xScale = 2
-        projectileButton.yScale = 2
-        projectileButton.name = "projectile button"
-        addChild(projectileButton)
-        
-        // set up projectile
-        projectile.physicsBody = SKPhysicsBody(rectangleOf: projectile.size)
-        // add this, to ensure dynamism:
-        projectile.physicsBody?.isDynamic = true
-        
+        // set the foreground's position to the bottom of the screen and add it to the scene
+        foreground.position = CGPoint(x: self.frame.midX, y: self.frame.maxY - 65)
+        print(foreground.position)
+        foreground.size.width = self.size.width
+        foreground.zPosition = 7
+        addChild(foreground)
+    }
+    
+    func setupRudolph() {
         // set up the rudolph walking frames
         let rudolphAnimatedAtlas = SKTextureAtlas(named: "rudolph")
         var walkFrames = [SKTexture]()
@@ -79,13 +101,23 @@ class GameScene: SKScene {
         let firstFrame = rudolphWalkingFrames[0]
         rudolph = SKSpriteNode(texture: firstFrame)
         
+        rudolph.name = "rudolph"
+        
         rudolph.position = CGPoint(x: self.frame.minX + 50, y: self.frame.minY + 60)
         rudolph.xScale = 1.5
         rudolph.yScale = 1.5
+        rudolph.zPosition = 10
         addChild(rudolph)
-        
-        spawnProfessor()
-        walkingRudolph()
+    }
+    
+    func setupCandyCaneProjectileButton() {
+        // set up candyCaneProjectile button design
+        candyCaneProjectileButton.position = CGPoint(x: self.frame.maxX - 90, y: self.frame.minY + 150)
+        candyCaneProjectileButton.xScale = 2
+        candyCaneProjectileButton.yScale = 2
+        candyCaneProjectileButton.zPosition = 7
+        candyCaneProjectileButton.name = "projectile button"
+        addChild(candyCaneProjectileButton)
     }
     
     func spawnProfessor() {
@@ -107,25 +139,30 @@ class GameScene: SKScene {
         let firstProfFrame = professorWalkingFrames[0]
         professor = SKSpriteNode(texture: firstProfFrame)
         
+        // set up professor's position
         professor.position = CGPoint(x: self.frame.maxX - 50, y: self.frame.minY + 60)
         professor.xScale = 2.3
         professor.yScale = 2.3
+        professor.zPosition = 10
+        
+        professor.name = "professor"
+        
+        // set up professor's physics
+        professor.physicsBody = SKPhysicsBody(rectangleOf: professor.size)
+        professor.physicsBody?.isDynamic = true
+        professor.physicsBody?.affectedByGravity = false
+
         addChild(professor)
         
         walkingProfessor()
         
-        print("moving prof...")
-        
         // 3
-        let moveAction = SKAction.moveTo(x: rudolph.position.x, duration: 6.0)
+        let moveAction = SKAction.moveTo(x: self.frame.minX - 50, duration: 6.0)
         
         // 4
         let doneAction = (SKAction.run({
-            print("Professor finished moving")
             self.removeFromParent()
         }))
-        
-//        self.addChild(professor)
         
         // 5
         let moveActionWithDone = (SKAction.sequence([moveAction, doneAction]))
@@ -158,29 +195,35 @@ class GameScene: SKScene {
         walkingRudolph()
     }
     
-    func shootProjectile() {
-        let projectile = SKSpriteNode(imageNamed: "candy cane")
+    func shootCandyCaneProjectile() {
+        let candyCaneProjectile = SKSpriteNode(imageNamed: "candy cane")
+        candyCaneProjectile.name = "candy cane projectile"
         
         // starting position
-        projectile.position = CGPoint(x: rudolph.position.x + 40, y: rudolph.position.y)
-        projectile.zPosition = 5
+        candyCaneProjectile.position = CGPoint(x: rudolph.position.x + 40, y: rudolph.position.y)
+        candyCaneProjectile.zPosition = 9
+        
+        
+        // set up candyCaneProjectile physics
+        candyCaneProjectile.physicsBody = SKPhysicsBody(rectangleOf: candyCaneProjectile.size)
+        candyCaneProjectile.physicsBody?.isDynamic = true
+        candyCaneProjectile.physicsBody?.affectedByGravity = false
         
         // 3
         let moveAction = SKAction.moveTo(x: self.size.width + 50, duration: 1.0)
 
         // 4
         let doneAction = (SKAction.run({
-            print("Projectile finished moving")
-            projectile.removeFromParent()
+            candyCaneProjectile.removeFromParent()
         }))
         
-        self.addChild(projectile)
+        self.addChild(candyCaneProjectile)
         
         // 5
         let moveActionWithDone = (SKAction.sequence([moveAction, doneAction]))
         
         shootSoundEffect.run(SKAction.play())
-        projectile.run(moveActionWithDone, withKey: "shot projectile")
+        candyCaneProjectile.run(moveActionWithDone, withKey: "shot candy cane projectile")
     }
     
     
@@ -191,9 +234,26 @@ class GameScene: SKScene {
             
             // check if the projectile button was touched
             if touchNode.name == "projectile button" {
-                print("touched projectile")
-                shootProjectile()
+                shootCandyCaneProjectile()
                 return
+            }
+            // present home screen if home button was touched
+            else if touchNode.name == "home button" {
+                print("tapped home")
+                if view != nil {
+                    if let scene = SKScene(fileNamed: "StartScene") {
+                        // set the scale mode to scale to fit the window
+                        scene.scaleMode = .aspectFill
+                        
+                        // present the scene
+                        let transition:SKTransition = SKTransition.doorsCloseVertical(withDuration: 2)
+                        self.view?.presentScene(scene, transition: transition)
+                    }
+
+                    view?.ignoresSiblingOrder = true
+                    view?.showsFPS = false
+                    view?.showsNodeCount = false
+                }
             }
         }
         
@@ -250,5 +310,32 @@ class GameScene: SKScene {
     
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
+    }
+}
+
+extension GameScene: SKPhysicsContactDelegate {
+    func didBegin(_ contact: SKPhysicsContact) {
+        print("did begin")
+        guard let nodeA = contact.bodyA.node else { return }
+        guard let nodeB = contact.bodyB.node else { return }
+        
+        if contact.bodyA.node?.name == "candy cane projectile" {
+            collisionBetween(projectile: nodeA, object: nodeB)
+        }
+    }
+    
+    func collisionBetween(projectile: SKNode, object: SKNode) {
+        print("there was a collision")
+        
+        if object.name == "professor" {
+            print("collision between prof and projectile")
+            destroy(object: object)
+            destroy(object: projectile)
+        }
+    }
+    
+    func destroy(object: SKNode) {
+        object.removeAllActions()
+        object.removeFromParent()
     }
 }

@@ -1,11 +1,3 @@
-//
-//  GameViewController.swift
-//  FinalProject
-//
-//  Created by Victoria on 12/15/17.
-//  Copyright © 2017 Victoria. All rights reserved.
-//
-
 import UIKit
 import SpriteKit
 import GameplayKit
@@ -13,13 +5,30 @@ import GameplayKit
 class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        let scene = GameScene(size: view.bounds.size)
-        let skView = view as! SKView
-        skView.showsFPS = true
-        skView.showsNodeCount = true
-        skView.ignoresSiblingOrder = false
-        scene.scaleMode = .resizeFill
-        skView.presentScene(scene)
+        
+        if let view = self.view as! SKView? {
+            // Load the SKScene from 'StartScene.sks'
+            if let scene = SKScene(fileNamed: "StartScene") {
+                // Set the scale mode to scale to fit the window
+                scene.scaleMode = .aspectFill
+                
+                // Present the scene
+                view.presentScene(scene)
+            }
+                        
+            view.ignoresSiblingOrder = true
+            view.showsFPS = false
+            view.showsNodeCount = false
+        }
+        
+        
+//        let scene = GameScene(size: view.bounds.size)
+//        let skView = view as! SKView
+//        skView.showsFPS = true
+//        skView.showsNodeCount = true
+//        skView.ignoresSiblingOrder = false
+//        scene.scaleMode = .resizeFill
+//        skView.presentScene(scene)
     }
     
     override var prefersStatusBarHidden: Bool {
@@ -27,7 +36,7 @@ class GameViewController: UIViewController {
     }
         
 }
-
+//
 //    override func viewDidLoad() {
 //        super.viewDidLoad()
 //
