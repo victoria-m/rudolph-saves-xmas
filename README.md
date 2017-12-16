@@ -2,13 +2,14 @@
 ## Summary
 I changed the theme of this project, but it’s still a very similar game to the one I intended to make. In this game, Rudolph the Red-Nosed Reindeer needs to keep his schedule free so he can help Santa deliver presents on Christmas. This means he needs to avoid those pesky professors who are trying to give him more homework.
 
-I learned a about SpriteKit game development while making this, but I also realized I may have been a bit overly-ambitious with my project proposal. So I ended up making a game with the following features:
-	1. You can move Rudolph around by clicking on your desired location.
-	2. You can make Rudolph shoot candy canes by clicking on the candy cane icon on the right of the screen
-	3. A professor (wizard sprite) spawns on the opposite side of the screen (I began using the physics engine but I didn’t have enough time to fully figure it out so you can’t hit the professor with candy canes).
-	4. You can go back and forth between the start and game screens by clicking the play and home buttons.
-	5. Background music and projectile sound effects :D
-	6. Walking animations
+I learned a lot about SpriteKit game development, but I also realized I may have been a bit overly-ambitious with my project proposal. So I ended up making a game with the following features:
+
+1. You can move Rudolph around by clicking on your desired location.
+2. You can make Rudolph shoot candy canes by clicking on the candy cane icon on the right of the screen
+3. A professor (wizard sprite) spawns on the opposite side of the screen (I began using the physics engine but I didn’t have enough time to fully figure it out so you can’t hit the professor with candy canes).
+4. You can go back and forth between the start and game screens by clicking the play and home buttons.
+5. Background music and projectile sound effects :D
+6. Walking animations
 
 ## How to Play
 1. Press the play button
@@ -34,12 +35,13 @@ I changed the way the points were allocated because after using SpriteKit I real
 All assets used were royalty-free.
 
 * Christmas sprites and music
-	* [Renne Cadeaux TUTO by Dev Du Dimanche](https://developpeusedudimanche.itch.io/renne-cadeau-tuto)
+* [Renne Cadeaux TUTO by Dev Du Dimanche](https://developpeusedudimanche.itch.io/renne-cadeau-tuto)
 * Wizard sprite
-	* [The “Fuck Wasting Art” Art Package by Andrew Connelly](https://cog_software.itch.io/fwa-artpackage)
+* [The “Fuck Wasting Art” Art Package by Andrew Connelly](https://cog_software.itch.io/fwa-artpackage)
 * GUI
-	* [Button Asset Pack by adwitr](https://adwitr.itch.io/button-asset-pack)
+* [Button Asset Pack by adwitr](https://adwitr.itch.io/button-asset-pack)
 
 ## References
 * Walking animation
-	* [Sprite Kit Animations and Texture Atlases in Swift](https://www.raywenderlich.com/89222/sprite-kit-animations-texture-atlases-swift)
+* [Sprite Kit Animations and Texture Atlases in Swift](https://www.raywenderlich.com/89222/sprite-kit-animations-texture-atlases-swift)
+
