@@ -328,37 +328,35 @@ class GameScene: SKScene {
 
 extension GameScene: SKPhysicsContactDelegate {
     func didBegin(_ contact: SKPhysicsContact) {
-        // if collision between professor and projectile
-//        print("collision detected")
-//        if contact.bodyA.node?.name == "candy cane projectile" {
-//            print("CANDY CANE COLLISION")
-//            collisionBetween(projectile: (contact.bodyA.node)!, object: (contact.bodyB.node)!)
-//        }
-//        else if contact.bodyB.node?.name == "candy cane projectile" {
-//            print("CANDY CANE COLLISION")
-//        }
-//        else if contact.bodyA.node?.name == "professor" {
-//            print("PROFESSOR COLLISION")
-//        }
-//        else if contact.bodyA.node?.name == "rudolph" {
-//            print("RUDOLPH COLLISION")
-//        }
         // candy cane with professor collision
         if contact.bodyA.categoryBitMask == 0b1 && contact.bodyB.categoryBitMask == 0b10 || contact.bodyA.categoryBitMask == 0b10 && contact.bodyB.categoryBitMask == 0b1 {
             print("candy cane and professor collision")
             collisionBetween(projectile: (contact.bodyA.node)!, object: (contact.bodyB.node)!)
         }
+        // professor and rudolph collision
+        else if contact.bodyA.categoryBitMask == 0b10 && contact.bodyB.categoryBitMask == 0b11 || contact.bodyA.categoryBitMask == 0b11 && contact.bodyB.categoryBitMask == 0b10 {
+            print("professor and rudolph collision")
+            collisionBetween(projectile: contact.bodyA.node!, object: contact.bodyB.node!)
+        }
         
     }
     
-    
     func collisionBetween(projectile: SKNode, object: SKNode) {
-        if object.name == "professor" {
+        if object.name == "rudolph" {
+            destroy(object: object)
+        }
+        else if projectile.name == "rudolph" {
+            destroy(object: projectile)
+        }
+        else if object.name == "professor" {
             destroy(object: object)
             destroy(object: projectile)
+            spawnProfessor()
         } else if object.name == "candy cane projectile" {
             destroy(object: object)
-            destroy(object: projectile)        }
+            destroy(object: projectile)
+            spawnProfessor()
+        }
     }
     
     func destroy(object: SKNode) {
