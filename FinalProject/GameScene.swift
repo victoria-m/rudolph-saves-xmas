@@ -156,11 +156,6 @@ class GameScene: SKScene {
     }
     
     func spawnProfessor() {
-        if professorSpawnCount > 5 {
-            // win condition
-            win()
-        }
-        
         // set up the professor walking frames
         let professorAnimatedAtlas = SKTextureAtlas(named: "professor")
         var profWalkFrames = [SKTexture]()
@@ -396,11 +391,13 @@ extension GameScene: SKPhysicsContactDelegate {
         else if object.name == "professor" {
             destroy(object: object)
             destroy(object: projectile)
-            if professorSpawnCount < 5 { spawnProfessor() }
+            if professorSpawnCount <= 5 { spawnProfessor() }
+            else { win() }
         } else if object.name == "candy cane projectile" {
             destroy(object: object)
             destroy(object: projectile)
-            if professorSpawnCount < 5 { spawnProfessor() }
+            if professorSpawnCount <= 5 { spawnProfessor() }
+            else { win() }
         }
     }
     

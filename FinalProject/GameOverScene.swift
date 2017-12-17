@@ -21,7 +21,7 @@ class GameOverScene: SKScene {
                         scene.scaleMode = .aspectFill
                         
                         // present the scene
-                        let transition:SKTransition = SKTransition.doorsCloseVertical(withDuration: 2)
+                        let transition:SKTransition = SKTransition.doorsOpenVertical(withDuration: 2)
                         self.view?.presentScene(scene, transition: transition)
                     }
                     
