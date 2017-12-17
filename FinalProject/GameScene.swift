@@ -19,6 +19,8 @@ class GameScene: SKScene {
     // enemy sprite
     var professor: SKSpriteNode!
     var professorWalkingFrames: [SKTexture]!
+    var professor2: SKSpriteNode!
+    var professor2WalkingFrames: [SKTexture]!
     
     // projectile button sprite
     var candyCaneProjectileButton = SKSpriteNode(imageNamed: "candy cane")
@@ -44,6 +46,10 @@ class GameScene: SKScene {
     // direction used by projectile and rudolph (indicates which direction rudolph is facing; value is 1 or -1)
     var multiplierForDirection: CGFloat = -1
     
+    // booleans used to tell if the professors are on the screen
+    var professorOnScreen = false
+    var professor2OnScreen = false
+    
     override func didMove(to view: SKView) {
         self.physicsWorld.contactDelegate = self
         self.physicsBody?.isDynamic = true
@@ -56,8 +62,9 @@ class GameScene: SKScene {
         setupCandyCaneProjectileButton()
         setupRudolph()
         
-        // spawn professor and start rudolph walking animation
+        // spawn professors and start rudolph walking animation
         spawnProfessor()
+        spawnProfessor2()
         walkingRudolph()
     }
     
@@ -153,7 +160,7 @@ class GameScene: SKScene {
         rudolph.name = "rudolph"
         
         // set up Rudolph's position
-        rudolph.position = CGPoint(x: self.frame.minX + 50, y: self.frame.minY + 60)
+        rudolph.position = CGPoint(x: self.frame.size.width / 2, y: self.frame.minY + 60)
         rudolph.xScale = 1.5
         rudolph.yScale = 1.5
         rudolph.zPosition = 10
@@ -180,6 +187,11 @@ class GameScene: SKScene {
     }
     
     func spawnProfessor() {
+        professorOnScreen = true
+        
+        // generate a random x value for rudolph's position
+        var randomX:CGFloat
+        
         // set up the professor walking frames
         let professorAnimatedAtlas = SKTextureAtlas(named: "professor")
         var profWalkFrames = [SKTexture]()
@@ -198,11 +210,11 @@ class GameScene: SKScene {
         let firstProfFrame = professorWalkingFrames[0]
         professor = SKSpriteNode(texture: firstProfFrame)
         
-        // generate random x coordinate for spawning position
-        let randomX = CGFloat(arc4random_uniform(500))
-        
+        // generate random x coordinate for professor's spawning position
+        randomX = CGFloat(arc4random_uniform(50))
+
         // set up professor's position
-        professor.position = CGPoint(x: self.frame.maxX - randomX, y: self.frame.minY + 60)
+        professor.position = CGPoint(x: self.frame.minX + randomX, y: self.frame.minY + 60)
         professor.xScale = 2.3
         professor.yScale = 2.3
         professor.zPosition = 10
@@ -222,15 +234,77 @@ class GameScene: SKScene {
         walkingProfessor()
         
         // generate random speed duration
-        let randomDuration = Double(arc4random_uniform(7) + 3)
+        let randomDuration = Double(arc4random_uniform(11) + 7)
         
-        let moveAction = SKAction.moveTo(x: self.frame.minX - 50, duration: randomDuration)
+        // professor moves toward Rudolph
+        let moveAction = SKAction.moveTo(x: self.frame.maxX, duration: randomDuration)
         let doneAction = SKAction.run({ self.removeFromParent()})
         
         // combine move and done actions
         let moveActionWithDone = (SKAction.sequence([moveAction, doneAction]))
         
         professor.run(moveActionWithDone, withKey: "professor moved")
+        professorSpawnCount += 1
+    }
+    
+    
+    func spawnProfessor2() {
+        professor2OnScreen = true
+        
+        var randomX: CGFloat
+        
+        // set up the professor walking frames
+        let professorAnimatedAtlas = SKTextureAtlas(named: "professor2")
+        var prof2WalkFrames = [SKTexture]()
+        
+        let numProfImages = professorAnimatedAtlas.textureNames.count
+        
+        // add each image from the rudolph atlas folder to the walkframes array
+        for index in 1 ... numProfImages {
+            let prof2TextureName = "professor2\(index)"
+            prof2WalkFrames.append(professorAnimatedAtlas.textureNamed(prof2TextureName))
+        }
+        
+        professor2WalkingFrames = prof2WalkFrames
+        
+        // get the first walking frame and position it in the center of the screen
+        let firstProfFrame = professor2WalkingFrames[0]
+        professor2 = SKSpriteNode(texture: firstProfFrame)
+        
+        // generate random x coordinate for professor's spawning position
+        randomX = CGFloat(arc4random_uniform(50))
+        
+        // set up professor2's position
+        professor2.position = CGPoint(x: self.frame.maxX - randomX, y: self.frame.minY + 60)
+        professor2.xScale = 2.3
+        professor2.yScale = 2.3
+        professor2.zPosition = 10
+        
+        professor2.name = "professor2"
+        
+        // set up professor's physics
+        professor2.physicsBody = SKPhysicsBody(rectangleOf: professor.size)
+        professor2.physicsBody?.isDynamic = true
+        professor2.physicsBody?.affectedByGravity = false
+        professor2.physicsBody?.categoryBitMask = PhysicsCategory.professor2Category
+        professor2.physicsBody?.contactTestBitMask = PhysicsCategory.rudolphCategory | PhysicsCategory.candyCaneProjectileCategory
+        professor2.physicsBody?.collisionBitMask = PhysicsCategory.rudolphCategory | PhysicsCategory.candyCaneProjectileCategory
+        
+        addChild(professor2)
+        
+        walkingProfessor2()
+        
+        // generate random speed duration
+        let randomDuration = Double(arc4random_uniform(11) + 7)
+        
+        // professor moves toward Rudolph
+        let moveAction = SKAction.moveTo(x: self.frame.minX, duration: randomDuration)
+        let doneAction = SKAction.run({ self.removeFromParent()})
+        
+        // combine move and done actions
+        let moveActionWithDone = (SKAction.sequence([moveAction, doneAction]))
+        
+        professor2.run(moveActionWithDone, withKey: "professor2 moved")
         professorSpawnCount += 1
     }
     
@@ -243,6 +317,16 @@ class GameScene: SKScene {
                              restore: true)),
                     withKey:"walkingInPlaceProfessor")
     }
+    
+    func walkingProfessor2() {
+        professor2.run(SKAction.repeatForever(
+            SKAction.animate(with: professor2WalkingFrames,
+                             timePerFrame: 0.2,
+                             resize: false,
+                             restore: true)),
+                      withKey:"walkingInPlaceProfessor2")
+    }
+    
     
     // starts Rudolph's walk animation
     func walkingRudolph() {
@@ -409,11 +493,18 @@ extension GameScene: SKPhysicsContactDelegate {
         if contact.bodyA.categoryBitMask == 0b1 && contact.bodyB.categoryBitMask == 0b10 || contact.bodyA.categoryBitMask == 0b10 && contact.bodyB.categoryBitMask == 0b1 {
             collisionBetween(projectile: (contact.bodyA.node)!, object: (contact.bodyB.node)!)
         }
+        // candy cane with professor2 collision
+        else if contact.bodyA.categoryBitMask == 0b1 && contact.bodyB.categoryBitMask == 0b101 || contact.bodyA.categoryBitMask == 0b101 && contact.bodyB.categoryBitMask == 0b1 {
+            collisionBetween(projectile: (contact.bodyA.node)!, object: (contact.bodyB.node)!)
+        }
         // professor and rudolph collision
         else if contact.bodyA.categoryBitMask == 0b10 && contact.bodyB.categoryBitMask == 0b11 || contact.bodyA.categoryBitMask == 0b11 && contact.bodyB.categoryBitMask == 0b10 {
             collisionBetween(projectile: contact.bodyA.node!, object: contact.bodyB.node!)
         }
-        
+        // professor2 and rudolph collision
+        else if contact.bodyA.categoryBitMask == 0b101 && contact.bodyB.categoryBitMask == 0b11 || contact.bodyA.categoryBitMask == 0b11 && contact.bodyB.categoryBitMask == 0b101 {
+            collisionBetween(projectile: contact.bodyA.node!, object: contact.bodyB.node!)
+        }
     }
     
     func collisionBetween(projectile: SKNode, object: SKNode) {
@@ -428,16 +519,36 @@ extension GameScene: SKPhysicsContactDelegate {
         else if object.name == "professor" {
             destroy(object: object)
             destroy(object: projectile)
-            if professorSpawnCount < 6 { spawnProfessor() }
-        } else if object.name == "candy cane projectile" {
+            if professorSpawnCount < 8 { spawnProfessor()  }
+        }
+        else if object.name == "professor2" {
             destroy(object: object)
             destroy(object: projectile)
-            if professorSpawnCount < 6 { spawnProfessor() }
+            if professorSpawnCount < 8{ spawnProfessor2() }
+        }
+        else if object.name == "candy cane projectile" {
+            destroy(object: object)
+            destroy(object: projectile)
+            // if both professors are not on the screen, spawn them
+            if professorSpawnCount < 12 && !professorOnScreen && !professor2OnScreen  {
+                spawnProfessor()
+                spawnProfessor2()
+                return
+            }
+            else if professorSpawnCount < 8 && projectile.name == "professor" && !professor2OnScreen {
+                spawnProfessor()
+            }
+            else if professorSpawnCount < 8 && projectile.name == "professor2" && !professorOnScreen {
+                spawnProfessor2()
+            }
         }
     }
     
     func destroy(object: SKNode) {
         object.removeAllActions()
         object.removeFromParent()
+        
+        if object.name == "professor" { professorOnScreen = false }
+        else if object.name == "professor2" {professor2OnScreen = false }
     }
 }

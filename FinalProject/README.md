@@ -4,9 +4,9 @@ I changed the theme of this project, but it’s still a very similar game to the
 
 The game has the following features:
 
-1. You can move Rudolph around by clicking on your desired location.
-2. You can make Rudolph shoot candy canes by clicking on the candy cane icon on the right of the screen
-3. A professor (wizard sprite) spawns on the opposite side of the screen, throw candy canes at him!
+1. Make Rudolph walk by tapping on your desired destination.
+2. Rudolph shoots candy canes when you tap on the candy cane icon on the lower right (candy canes are shot in the direction he is facing)
+3. Professors spawn on either sides of the screen, throw candy canes at them!
 4. You can go back and forth between the start and game screens by clicking the play and home buttons.
 5. Background music and projectile sound effects
 6. Animations

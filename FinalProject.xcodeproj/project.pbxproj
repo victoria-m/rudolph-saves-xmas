@@ -27,6 +27,7 @@
 		CEB7A1C61FE3A61200189B77 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEB7A1C51FE3A61200189B77 /* Assets.xcassets */; };
 		CEB7A1C91FE3A61200189B77 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEB7A1C71FE3A61200189B77 /* LaunchScreen.storyboard */; };
 		CEB7A1D61FE4546E00189B77 /* rudolph.atlas in Resources */ = {isa = PBXBuildFile; fileRef = CEB7A1D51FE4546E00189B77 /* rudolph.atlas */; };
+		CED53FBB1FE720FA00D080CE /* professor2.atlas in Resources */ = {isa = PBXBuildFile; fileRef = CED53FBA1FE720FA00D080CE /* professor2.atlas */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 		CEB7A1C81FE3A61200189B77 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CEB7A1CA1FE3A61200189B77 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CEB7A1D51FE4546E00189B77 /* rudolph.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = rudolph.atlas; sourceTree = "<group>"; };
+		CED53FBA1FE720FA00D080CE /* professor2.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = professor2.atlas; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,6 +195,7 @@
 				CE11C2E11FE4FF2C0035BA81 /* Actions */,
 				CEB7A1CA1FE3A61200189B77 /* Info.plist */,
 				CE11C2D21FE4B2550035BA81 /* professor.atlas */,
+				CED53FBA1FE720FA00D080CE /* professor2.atlas */,
 				CEB7A1D51FE4546E00189B77 /* rudolph.atlas */,
 			);
 			path = FinalProject;
@@ -283,6 +286,7 @@
 				CE26A72A1FE609F2003F2994 /* GameOverScene.sks in Resources */,
 				CEB7A1BB1FE3A61200189B77 /* GameScene.sks in Resources */,
 				CE11C2D31FE4B2560035BA81 /* professor.atlas in Resources */,
+				CED53FBB1FE720FA00D080CE /* professor2.atlas in Resources */,
 				CEB7A1C61FE3A61200189B77 /* Assets.xcassets in Resources */,
 				CE11C2D11FE4AB960035BA81 /* shoot.wav in Resources */,
 				CEB7A1C91FE3A61200189B77 /* LaunchScreen.storyboard in Resources */,
