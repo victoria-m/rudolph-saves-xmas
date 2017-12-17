@@ -7,15 +7,15 @@ class GameOverScene: SKScene {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        print("touches began")
         let homeButton = childNode(withName: "home button")
         
         if let touch = touches.first {
             let pos = touch.location(in: self)
             let node = self.atPoint(pos)
             
-            // present home screen if home button was touched
-            if node.name == "home button" {
-                print("tapped home")
+            // start game if play button is pressed
+            if node == homeButton {
                 if view != nil {
                     if let scene = SKScene(fileNamed: "StartScene") {
                         // set the scale mode to scale to fit the window
@@ -34,4 +34,3 @@ class GameOverScene: SKScene {
         }
     }
 }
-
