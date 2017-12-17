@@ -344,7 +344,7 @@ class GameScene: SKScene {
         walkingRudolph()
         
         // win game if Rudolph reaches the end of the screen
-        if rudolph.position.x >= 600 { win() }
+        if rudolph.position.x >= 600 && !professorOnScreen && !professor2OnScreen { win() }
     }
     
     func shootCandyCaneProjectile() {
