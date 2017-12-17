@@ -31,7 +31,7 @@ class GameScene: SKScene {
     
     // button
     var homeButton: SKSpriteNode!
-
+    
     override func didMove(to view: SKView) {
         self.physicsWorld.contactDelegate = self
         self.physicsBody?.isDynamic = true
@@ -324,6 +324,23 @@ class GameScene: SKScene {
     override func update(_ currentTime: TimeInterval) {
         // called before each frame is rendered
     }
+    
+    func gameOver() {
+        if view != nil {
+            if let scene = SKScene(fileNamed: "GameOverScene") {
+                // set the scale mode to scale to fit the window
+                scene.scaleMode = .aspectFill
+                
+                // present the scene
+                let transition:SKTransition = SKTransition.doorsCloseVertical(withDuration: 2)
+                self.view?.presentScene(scene, transition: transition)
+            }
+            
+            view?.ignoresSiblingOrder = true
+            view?.showsFPS = false
+            view?.showsNodeCount = false
+        }
+    }
 }
 
 extension GameScene: SKPhysicsContactDelegate {
@@ -344,9 +361,11 @@ extension GameScene: SKPhysicsContactDelegate {
     func collisionBetween(projectile: SKNode, object: SKNode) {
         if object.name == "rudolph" {
             destroy(object: object)
+            gameOver()
         }
         else if projectile.name == "rudolph" {
             destroy(object: projectile)
+            gameOver()
         }
         else if object.name == "professor" {
             destroy(object: object)

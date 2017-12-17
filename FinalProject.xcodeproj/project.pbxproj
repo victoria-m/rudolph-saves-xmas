@@ -14,6 +14,8 @@
 		CE11C2D71FE4B9750035BA81 /* StartScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = CE11C2D61FE4B9750035BA81 /* StartScene.sks */; };
 		CE11C2DE1FE4FEFE0035BA81 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = CE11C2DD1FE4FEFE0035BA81 /* README.md */; };
 		CE26A7261FE600C8003F2994 /* PhysicsCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE26A7251FE600C8003F2994 /* PhysicsCategory.swift */; };
+		CE26A7281FE609DE003F2994 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE26A7271FE609DE003F2994 /* GameOverScene.swift */; };
+		CE26A72A1FE609F2003F2994 /* GameOverScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = CE26A7291FE609F2003F2994 /* GameOverScene.sks */; };
 		CEB7A1B91FE3A61200189B77 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB7A1B81FE3A61200189B77 /* AppDelegate.swift */; };
 		CEB7A1BB1FE3A61200189B77 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = CEB7A1BA1FE3A61200189B77 /* GameScene.sks */; };
 		CEB7A1BD1FE3A61200189B77 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = CEB7A1BC1FE3A61200189B77 /* Actions.sks */; };
@@ -33,6 +35,8 @@
 		CE11C2D61FE4B9750035BA81 /* StartScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = StartScene.sks; sourceTree = "<group>"; };
 		CE11C2DD1FE4FEFE0035BA81 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = FinalProject/README.md; sourceTree = SOURCE_ROOT; };
 		CE26A7251FE600C8003F2994 /* PhysicsCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsCategory.swift; sourceTree = "<group>"; };
+		CE26A7271FE609DE003F2994 /* GameOverScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
+		CE26A7291FE609F2003F2994 /* GameOverScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameOverScene.sks; sourceTree = "<group>"; };
 		CEB7A1B51FE3A61200189B77 /* FinalProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinalProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEB7A1B81FE3A61200189B77 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEB7A1BA1FE3A61200189B77 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -79,6 +83,7 @@
 			isa = PBXGroup;
 			children = (
 				CE11C2D81FE4B9B70035BA81 /* Start Menu */,
+				CE26A72B1FE609FF003F2994 /* Game Over */,
 				CE11C2DA1FE4B9E10035BA81 /* Game */,
 			);
 			name = Scenes;
@@ -134,6 +139,16 @@
 				CEB7A1BC1FE3A61200189B77 /* Actions.sks */,
 			);
 			name = Actions;
+			sourceTree = "<group>";
+		};
+		CE26A72B1FE609FF003F2994 /* Game Over */ = {
+			isa = PBXGroup;
+			children = (
+				CE26A7271FE609DE003F2994 /* GameOverScene.swift */,
+				CE26A7291FE609F2003F2994 /* GameOverScene.sks */,
+			);
+			name = "Game Over";
+			path = ..;
 			sourceTree = "<group>";
 		};
 		CEB7A1AC1FE3A61200189B77 = {
@@ -242,6 +257,7 @@
 				CEB7A1C41FE3A61200189B77 /* Main.storyboard in Resources */,
 				CE11C2CF1FE4AB910035BA81 /* background music.wav in Resources */,
 				CE11C2D71FE4B9750035BA81 /* StartScene.sks in Resources */,
+				CE26A72A1FE609F2003F2994 /* GameOverScene.sks in Resources */,
 				CEB7A1BB1FE3A61200189B77 /* GameScene.sks in Resources */,
 				CE11C2D31FE4B2560035BA81 /* professor.atlas in Resources */,
 				CEB7A1C61FE3A61200189B77 /* Assets.xcassets in Resources */,
@@ -263,6 +279,7 @@
 				CE11C2D51FE4B8D60035BA81 /* StartScene.swift in Sources */,
 				CE26A7261FE600C8003F2994 /* PhysicsCategory.swift in Sources */,
 				CEB7A1C11FE3A61200189B77 /* GameViewController.swift in Sources */,
+				CE26A7281FE609DE003F2994 /* GameOverScene.swift in Sources */,
 				CEB7A1B91FE3A61200189B77 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
