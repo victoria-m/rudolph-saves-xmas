@@ -35,6 +35,9 @@ class GameScene: SKScene {
     // win condition is to defeat 5 professors
     var professorSpawnCount = 0
     
+    // label
+    var hintLabel = SKLabelNode(fontNamed: "Helvetica Neue UltraLight")
+    
     override func didMove(to view: SKView) {
         self.physicsWorld.contactDelegate = self
         self.physicsBody?.isDynamic = true
@@ -43,6 +46,7 @@ class GameScene: SKScene {
         setupBackgroundAndForeground()
         setupButtons()
         setupSound()
+        setupLabels()
         setupCandyCaneProjectileButton()
         setupRudolph()
         
@@ -78,6 +82,15 @@ class GameScene: SKScene {
                 self.addChild(self.homeButton)
             }
         }).resume()
+    }
+    
+    func setupLabels() {
+        hintLabel.fontSize = 40
+        hintLabel.fontColor = UIColor.white
+        hintLabel.text = "hint: press the candy cane to shoot"
+        hintLabel.position = CGPoint(x: frame.size.width / 2, y: frame.maxY - 100)
+        hintLabel.zPosition = 20
+        addChild(hintLabel)
     }
     
     func setupSound() {
