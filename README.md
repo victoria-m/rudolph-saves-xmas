@@ -16,10 +16,10 @@ The game has the following features:
 2. Move Rudolph around by tapping on your desired location
 3. Shoot projectiles by tapping the candy cane icon
 4. Defeat all of the professors
-5. Reach the end of the screen
+5. Get the present!
 
 ## Points
-**Total points: 46**
+**Total points: 49**
 I changed the way the points were allocated because after using SpriteKit I realized I wouldn’t be able to use the UIKit the way I had intended so I tailored the points allocation for SpriteKit.
 
 * Network request/response - 3 pts
@@ -27,7 +27,7 @@ I changed the way the points were allocated because after using SpriteKit I real
 * Threads - 2 pts
 * Full Autolayout - 3 pts
 * All available device support - 2 pts (iPhone only)
-* Custom SpriteKit drawing - 18 pts (6 things: rudolph, projectiles, professor,
+* Custom SpriteKit drawing - 21 pts (6 things: rudolph, projectiles, professor, present,
 * home button, start game button, foreground, and background)
 * UIController/SKScenes - 5 pts (GameViewController, GameScene, StartScene, WinScene, GameOverScene)
 * Custom Class - 1 pt (PhysicsCategory)
@@ -46,4 +46,3 @@ All assets used were royalty-free.
 ## References
 * Walking animation
 * [Sprite Kit Animations and Texture Atlases in Swift](https://www.raywenderlich.com/89222/sprite-kit-animations-texture-atlases-swift)
-

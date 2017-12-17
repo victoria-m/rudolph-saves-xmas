@@ -13,6 +13,9 @@ class GameScene: SKScene {
     var rudolph: SKSpriteNode!
     var rudolphWalkingFrames: [SKTexture]!
     
+    // present sprite
+    var present = SKSpriteNode(imageNamed: "present")
+    
     // enemy sprite
     var professor: SKSpriteNode!
     var professorWalkingFrames: [SKTexture]!
@@ -116,6 +119,13 @@ class GameScene: SKScene {
         foreground.size.width = self.size.width
         foreground.zPosition = 7
         addChild(foreground)
+        
+        // set up present sprite
+        present.position = CGPoint(x: 650, y: self.frame.minY + 60)
+        present.xScale = 2.5
+        present.yScale = 2.5
+        present.zPosition = 8
+        addChild(present)
     }
     
     func setupRudolph() {
@@ -247,7 +257,7 @@ class GameScene: SKScene {
         walkingRudolph()
         
         // win game if Rudolph reaches the end of the screen
-        if rudolph.position.x >= 650 { win() }
+        if rudolph.position.x >= 640 || rudolph.position.x <= 700 { win() }
     }
     
     func shootCandyCaneProjectile() {
