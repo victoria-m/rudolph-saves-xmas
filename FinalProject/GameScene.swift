@@ -85,7 +85,7 @@ class GameScene: SKScene {
     }
     
     func setupLabels() {
-        hintLabel.fontSize = 40
+        hintLabel.fontSize = 42
         hintLabel.fontColor = UIColor.white
         hintLabel.text = "hint: press the candy cane to shoot"
         hintLabel.position = CGPoint(x: frame.size.width / 2, y: frame.maxY - 100)
