@@ -35,7 +35,6 @@ class GameScene: SKScene {
     override func didMove(to view: SKView) {
         self.physicsWorld.contactDelegate = self
         self.physicsBody?.isDynamic = true
-        print(self.physicsWorld.contactDelegate)
         
         // initial setup
         setupBackgroundAndForeground()
@@ -132,10 +131,10 @@ class GameScene: SKScene {
         rudolph.zPosition = 10
         
         // rudolph's physics
-        rudolph.physicsBody = SKPhysicsBody(rectangleOf: rudolph.size)
-        rudolph.physicsBody?.isDynamic = true
-        rudolph.physicsBody?.affectedByGravity = false
-        rudolph.physicsBody?.categoryBitMask = PhysicsCategory.rudolphCategory
+//        rudolph.physicsBody = SKPhysicsBody(rectangleOf: rudolph.size)
+//        rudolph.physicsBody?.isDynamic = true
+//        rudolph.physicsBody?.affectedByGravity = false
+//        rudolph.physicsBody?.categoryBitMask = PhysicsCategory.rudolphCategory
         
         addChild(rudolph)
     }
@@ -178,10 +177,10 @@ class GameScene: SKScene {
         professor.name = "professor"
         
         // set up professor's physics
-        professor.physicsBody = SKPhysicsBody(rectangleOf: professor.size)
-        professor.physicsBody?.isDynamic = true
-        professor.physicsBody?.affectedByGravity = false
-        professor.physicsBody?.categoryBitMask = PhysicsCategory.professorCategory
+//        professor.physicsBody = SKPhysicsBody(rectangleOf: professor.size)
+//        professor.physicsBody?.isDynamic = true
+//        professor.physicsBody?.affectedByGravity = false
+//        professor.physicsBody?.categoryBitMask = PhysicsCategory.professorCategory
 
         addChild(professor)
         
@@ -234,11 +233,11 @@ class GameScene: SKScene {
         
         
         // set up candyCaneProjectile physics
-        candyCaneProjectile.physicsBody = SKPhysicsBody(rectangleOf: candyCaneProjectile.size)
-        candyCaneProjectile.physicsBody?.isDynamic = true
-        candyCaneProjectile.physicsBody?.affectedByGravity = false
-        candyCaneProjectile.physicsBody?.categoryBitMask = PhysicsCategory.candyCaneProjectileCategory
-        
+//        candyCaneProjectile.physicsBody = SKPhysicsBody(rectangleOf: candyCaneProjectile.size)
+//        candyCaneProjectile.physicsBody?.isDynamic = true
+//        candyCaneProjectile.physicsBody?.affectedByGravity = false
+//        candyCaneProjectile.physicsBody?.categoryBitMask = PhysicsCategory.candyCaneProjectileCategory
+//        
         let moveAction = SKAction.moveTo(x: self.size.width + 50, duration: 1.0)
         let doneAction = SKAction.run({candyCaneProjectile.removeFromParent()})
         
