@@ -38,7 +38,6 @@ class GameScene: SKScene {
     override func didMove(to view: SKView) {
         self.physicsWorld.contactDelegate = self
         self.physicsBody?.isDynamic = true
-        print(self.physicsWorld.contactDelegate)
         
         // initial setup
         setupBackgroundAndForeground()
@@ -101,7 +100,6 @@ class GameScene: SKScene {
         
         // set the foreground's position to the bottom of the screen and add it to the scene
         foreground.position = CGPoint(x: self.frame.midX, y: self.frame.maxY - 65)
-        print(foreground.position)
         foreground.size.width = self.size.width
         foreground.zPosition = 7
         addChild(foreground)
@@ -274,7 +272,6 @@ class GameScene: SKScene {
             }
             // present home screen if home button was touched
             else if touchNode.name == "home button" {
-                print("tapped home")
                 if view != nil {
                     if let scene = SKScene(fileNamed: "StartScene") {
                         // set the scale mode to scale to fit the window
@@ -368,12 +365,10 @@ extension GameScene: SKPhysicsContactDelegate {
     func didBegin(_ contact: SKPhysicsContact) {
         // candy cane with professor collision
         if contact.bodyA.categoryBitMask == 0b1 && contact.bodyB.categoryBitMask == 0b10 || contact.bodyA.categoryBitMask == 0b10 && contact.bodyB.categoryBitMask == 0b1 {
-            print("candy cane and professor collision")
             collisionBetween(projectile: (contact.bodyA.node)!, object: (contact.bodyB.node)!)
         }
         // professor and rudolph collision
         else if contact.bodyA.categoryBitMask == 0b10 && contact.bodyB.categoryBitMask == 0b11 || contact.bodyA.categoryBitMask == 0b11 && contact.bodyB.categoryBitMask == 0b10 {
-            print("professor and rudolph collision")
             collisionBetween(projectile: contact.bodyA.node!, object: contact.bodyB.node!)
         }
         
