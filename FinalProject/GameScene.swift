@@ -41,6 +41,9 @@ class GameScene: SKScene {
     // label
     var hintLabel = SKLabelNode(fontNamed: "Helvetica Neue UltraLight")
     
+    // direction used by projectile and rudolph (indicates which direction rudolph is facing; value is 1 or -1)
+    var multiplierForDirection: CGFloat = -1
+    
     override func didMove(to view: SKView) {
         self.physicsWorld.contactDelegate = self
         self.physicsBody?.isDynamic = true
@@ -265,11 +268,9 @@ class GameScene: SKScene {
         candyCaneProjectile.name = "candy cane projectile"
         
         // starting position
-        candyCaneProjectile.position = CGPoint(x: rudolph.position.x + 40, y: rudolph.position.y)
         candyCaneProjectile.zPosition = 10
         candyCaneProjectile.xScale = 1.5
         candyCaneProjectile.yScale = 1.5
-        
         
         // set up candyCaneProjectile physics
         candyCaneProjectile.physicsBody = SKPhysicsBody(rectangleOf: candyCaneProjectile.size)
@@ -279,7 +280,17 @@ class GameScene: SKScene {
         candyCaneProjectile.physicsBody?.contactTestBitMask = PhysicsCategory.professorCategory | PhysicsCategory.candyCaneProjectileCategory
         candyCaneProjectile.physicsBody?.collisionBitMask = PhysicsCategory.professorCategory | PhysicsCategory.candyCaneProjectileCategory
         
-        let moveAction = SKAction.moveTo(x: self.size.width + 50, duration: 1.0)
+        let moveAction: SKAction
+        
+        // determine the direction to shoot the projectile
+        if multiplierForDirection == 1 {
+            candyCaneProjectile.position = CGPoint(x: rudolph.position.x - 40, y: rudolph.position.y)
+            moveAction = SKAction.moveTo(x: self.frame.minX - 50, duration: 1.0)
+        } else {
+            candyCaneProjectile.position = CGPoint(x: rudolph.position.x + 40, y: rudolph.position.y)
+            moveAction = SKAction.moveTo(x: self.size.width + 50, duration: 1.0)
+        }
+        
         let doneAction = SKAction.run({candyCaneProjectile.removeFromParent()})
         
         self.addChild(candyCaneProjectile)
@@ -326,7 +337,6 @@ class GameScene: SKScene {
         // allow rudolph to move left and right, but not up and down
         let location = CGPoint(x: touch.location(in: self).x, y: self.frame.minY + 60)
         
-        var multiplierForDirection: CGFloat
         let rudolphVelocity = self.frame.size.width / 3.0
         
         let moveDifference = CGPoint(x: location.x - rudolph.position.x, y: location.y - rudolph.position.y)
