@@ -15,7 +15,8 @@ The game has the following features:
 1. Press the play button
 2. Move Rudolph around by tapping on your desired location
 3. Shoot projectiles by tapping the candy cane icon
-4. If you hit 5 professors, you win.
+4. Defeat all of the professors
+5. Reach the end of the screen
 
 ## Points
 **Total points: 46**

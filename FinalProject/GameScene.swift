@@ -245,6 +245,9 @@ class GameScene: SKScene {
     func rudolphMoveEnded() {
         rudolph.removeAllActions()
         walkingRudolph()
+        
+        // win game if Rudolph reaches the end of the screen
+        if rudolph.position.x >= 650 { win() }
     }
     
     func shootCandyCaneProjectile() {
@@ -406,12 +409,10 @@ extension GameScene: SKPhysicsContactDelegate {
             destroy(object: object)
             destroy(object: projectile)
             if professorSpawnCount < 6 { spawnProfessor() }
-            else { win() }
         } else if object.name == "candy cane projectile" {
             destroy(object: object)
             destroy(object: projectile)
             if professorSpawnCount < 6 { spawnProfessor() }
-            else { win() }
         }
     }
     
