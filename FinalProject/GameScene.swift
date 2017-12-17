@@ -35,6 +35,7 @@ class GameScene: SKScene {
     override func didMove(to view: SKView) {
         self.physicsWorld.contactDelegate = self
         self.physicsBody?.isDynamic = true
+        print(self.physicsWorld.contactDelegate)
         
         // initial setup
         setupBackgroundAndForeground()
@@ -131,10 +132,12 @@ class GameScene: SKScene {
         rudolph.zPosition = 10
         
         // rudolph's physics
-//        rudolph.physicsBody = SKPhysicsBody(rectangleOf: rudolph.size)
-//        rudolph.physicsBody?.isDynamic = true
-//        rudolph.physicsBody?.affectedByGravity = false
-//        rudolph.physicsBody?.categoryBitMask = PhysicsCategory.rudolphCategory
+        rudolph.physicsBody = SKPhysicsBody(rectangleOf: rudolph.size)
+        rudolph.physicsBody?.isDynamic = true
+        rudolph.physicsBody?.affectedByGravity = false
+        rudolph.physicsBody?.categoryBitMask = PhysicsCategory.rudolphCategory
+        rudolph.physicsBody?.contactTestBitMask = PhysicsCategory.professorCategory
+        rudolph.physicsBody?.collisionBitMask = PhysicsCategory.professorCategory
         
         addChild(rudolph)
     }
@@ -177,10 +180,12 @@ class GameScene: SKScene {
         professor.name = "professor"
         
         // set up professor's physics
-//        professor.physicsBody = SKPhysicsBody(rectangleOf: professor.size)
-//        professor.physicsBody?.isDynamic = true
-//        professor.physicsBody?.affectedByGravity = false
-//        professor.physicsBody?.categoryBitMask = PhysicsCategory.professorCategory
+        professor.physicsBody = SKPhysicsBody(rectangleOf: professor.size)
+        professor.physicsBody?.isDynamic = true
+        professor.physicsBody?.affectedByGravity = false
+        professor.physicsBody?.categoryBitMask = PhysicsCategory.professorCategory
+        professor.physicsBody?.contactTestBitMask = PhysicsCategory.rudolphCategory | PhysicsCategory.candyCaneProjectileCategory
+        professor.physicsBody?.collisionBitMask = PhysicsCategory.rudolphCategory | PhysicsCategory.candyCaneProjectileCategory
 
         addChild(professor)
         
@@ -233,11 +238,13 @@ class GameScene: SKScene {
         
         
         // set up candyCaneProjectile physics
-//        candyCaneProjectile.physicsBody = SKPhysicsBody(rectangleOf: candyCaneProjectile.size)
-//        candyCaneProjectile.physicsBody?.isDynamic = true
-//        candyCaneProjectile.physicsBody?.affectedByGravity = false
-//        candyCaneProjectile.physicsBody?.categoryBitMask = PhysicsCategory.candyCaneProjectileCategory
-//        
+        candyCaneProjectile.physicsBody = SKPhysicsBody(rectangleOf: candyCaneProjectile.size)
+        candyCaneProjectile.physicsBody?.isDynamic = true
+        candyCaneProjectile.physicsBody?.affectedByGravity = false
+        candyCaneProjectile.physicsBody?.categoryBitMask = PhysicsCategory.candyCaneProjectileCategory
+        candyCaneProjectile.physicsBody?.contactTestBitMask = PhysicsCategory.professorCategory | PhysicsCategory.candyCaneProjectileCategory
+        candyCaneProjectile.physicsBody?.collisionBitMask = PhysicsCategory.professorCategory | PhysicsCategory.candyCaneProjectileCategory
+        
         let moveAction = SKAction.moveTo(x: self.size.width + 50, duration: 1.0)
         let doneAction = SKAction.run({candyCaneProjectile.removeFromParent()})
         
