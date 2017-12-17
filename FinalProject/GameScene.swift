@@ -35,6 +35,7 @@ class GameScene: SKScene {
     override func didMove(to view: SKView) {
         self.physicsWorld.contactDelegate = self
         self.physicsBody?.isDynamic = true
+        print(self.physicsWorld.contactDelegate)
         
         // initial setup
         setupBackgroundAndForeground()
@@ -130,6 +131,12 @@ class GameScene: SKScene {
         rudolph.yScale = 1.5
         rudolph.zPosition = 10
         
+        // rudolph's physics
+        rudolph.physicsBody = SKPhysicsBody(rectangleOf: rudolph.size)
+        rudolph.physicsBody?.isDynamic = true
+        rudolph.physicsBody?.affectedByGravity = false
+        rudolph.physicsBody?.categoryBitMask = PhysicsCategory.rudolphCategory
+        
         addChild(rudolph)
     }
     
@@ -174,6 +181,7 @@ class GameScene: SKScene {
         professor.physicsBody = SKPhysicsBody(rectangleOf: professor.size)
         professor.physicsBody?.isDynamic = true
         professor.physicsBody?.affectedByGravity = false
+        professor.physicsBody?.categoryBitMask = PhysicsCategory.professorCategory
 
         addChild(professor)
         
@@ -220,13 +228,16 @@ class GameScene: SKScene {
         
         // starting position
         candyCaneProjectile.position = CGPoint(x: rudolph.position.x + 40, y: rudolph.position.y)
-        candyCaneProjectile.zPosition = 9
+        candyCaneProjectile.zPosition = 10
+        candyCaneProjectile.xScale = 1.5
+        candyCaneProjectile.yScale = 1.5
         
         
         // set up candyCaneProjectile physics
         candyCaneProjectile.physicsBody = SKPhysicsBody(rectangleOf: candyCaneProjectile.size)
         candyCaneProjectile.physicsBody?.isDynamic = true
         candyCaneProjectile.physicsBody?.affectedByGravity = false
+        candyCaneProjectile.physicsBody?.categoryBitMask = PhysicsCategory.candyCaneProjectileCategory
         
         let moveAction = SKAction.moveTo(x: self.size.width + 50, duration: 1.0)
         let doneAction = SKAction.run({candyCaneProjectile.removeFromParent()})
@@ -312,12 +323,19 @@ class GameScene: SKScene {
 extension GameScene: SKPhysicsContactDelegate {
     func didBegin(_ contact: SKPhysicsContact) {
         // if collision between professor and projectile
+        print("collision detected")
         if contact.bodyA.node?.name == "candy cane projectile" {
             collisionBetween(projectile: (contact.bodyA.node)!, object: (contact.bodyB.node)!)
         }
+        if contact.bodyA.categoryBitMask == 0b1 && contact.bodyB.categoryBitMask == 0b10 || contact.bodyA.categoryBitMask == 0b10 && contact.bodyB.categoryBitMask == 0b1 {
+            print("collision")
+        }
+        
     }
     
+    
     func collisionBetween(projectile: SKNode, object: SKNode) {
+        print("collision")
         if object.name == "professor" {
             destroy(object: object)
             destroy(object: projectile)
