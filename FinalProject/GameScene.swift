@@ -173,10 +173,10 @@ class GameScene: SKScene {
         professor = SKSpriteNode(texture: firstProfFrame)
         
         // generate random x coordinate for spawning position
-//        let randomX = Int(arc4random_uniform(200 + 1))
+        let randomX = CGFloat(arc4random_uniform(500))
         
         // set up professor's position
-        professor.position = CGPoint(x: self.frame.maxX - 50, y: self.frame.minY + 60)
+        professor.position = CGPoint(x: self.frame.maxX - randomX, y: self.frame.minY + 60)
         professor.xScale = 2.3
         professor.yScale = 2.3
         professor.zPosition = 10
@@ -392,12 +392,12 @@ extension GameScene: SKPhysicsContactDelegate {
         else if object.name == "professor" {
             destroy(object: object)
             destroy(object: projectile)
-            if professorSpawnCount <= 5 { spawnProfessor() }
+            if professorSpawnCount < 6 { spawnProfessor() }
             else { win() }
         } else if object.name == "candy cane projectile" {
             destroy(object: object)
             destroy(object: projectile)
-            if professorSpawnCount <= 5 { spawnProfessor() }
+            if professorSpawnCount < 6 { spawnProfessor() }
             else { win() }
         }
     }
