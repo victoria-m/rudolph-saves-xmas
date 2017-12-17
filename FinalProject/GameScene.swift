@@ -172,6 +172,9 @@ class GameScene: SKScene {
         let firstProfFrame = professorWalkingFrames[0]
         professor = SKSpriteNode(texture: firstProfFrame)
         
+        // generate random x coordinate for spawning position
+//        let randomX = Int(arc4random_uniform(200 + 1))
+        
         // set up professor's position
         professor.position = CGPoint(x: self.frame.maxX - 50, y: self.frame.minY + 60)
         professor.xScale = 2.3
@@ -192,7 +195,10 @@ class GameScene: SKScene {
         
         walkingProfessor()
         
-        let moveAction = SKAction.moveTo(x: self.frame.minX - 50, duration: 6.0)
+        // generate random speed duration
+        let randomDuration = Double(arc4random_uniform(7) + 3)
+        
+        let moveAction = SKAction.moveTo(x: self.frame.minX - 50, duration: randomDuration)
         let doneAction = SKAction.run({ self.removeFromParent()})
         
         // combine move and done actions
