@@ -46,3 +46,4 @@ All assets used were royalty-free.
 ## References
 * Walking animation
 * [Sprite Kit Animations and Texture Atlases in Swift](https://www.raywenderlich.com/89222/sprite-kit-animations-texture-atlases-swift)
+
