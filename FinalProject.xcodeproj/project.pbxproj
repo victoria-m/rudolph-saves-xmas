@@ -16,6 +16,8 @@
 		CE26A7261FE600C8003F2994 /* PhysicsCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE26A7251FE600C8003F2994 /* PhysicsCategory.swift */; };
 		CE26A7281FE609DE003F2994 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE26A7271FE609DE003F2994 /* GameOverScene.swift */; };
 		CE26A72A1FE609F2003F2994 /* GameOverScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = CE26A7291FE609F2003F2994 /* GameOverScene.sks */; };
+		CE26A72D1FE60DA6003F2994 /* WinScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE26A72C1FE60DA6003F2994 /* WinScene.swift */; };
+		CE26A72F1FE60DB0003F2994 /* WinScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = CE26A72E1FE60DB0003F2994 /* WinScene.sks */; };
 		CEB7A1B91FE3A61200189B77 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB7A1B81FE3A61200189B77 /* AppDelegate.swift */; };
 		CEB7A1BB1FE3A61200189B77 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = CEB7A1BA1FE3A61200189B77 /* GameScene.sks */; };
 		CEB7A1BD1FE3A61200189B77 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = CEB7A1BC1FE3A61200189B77 /* Actions.sks */; };
@@ -37,6 +39,8 @@
 		CE26A7251FE600C8003F2994 /* PhysicsCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsCategory.swift; sourceTree = "<group>"; };
 		CE26A7271FE609DE003F2994 /* GameOverScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
 		CE26A7291FE609F2003F2994 /* GameOverScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameOverScene.sks; sourceTree = "<group>"; };
+		CE26A72C1FE60DA6003F2994 /* WinScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinScene.swift; sourceTree = "<group>"; };
+		CE26A72E1FE60DB0003F2994 /* WinScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = WinScene.sks; sourceTree = "<group>"; };
 		CEB7A1B51FE3A61200189B77 /* FinalProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinalProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEB7A1B81FE3A61200189B77 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEB7A1BA1FE3A61200189B77 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -82,6 +86,7 @@
 		CE11C2D91FE4B9CB0035BA81 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				CE26A7301FE60DB7003F2994 /* Win */,
 				CE11C2D81FE4B9B70035BA81 /* Start Menu */,
 				CE26A72B1FE609FF003F2994 /* Game Over */,
 				CE11C2DA1FE4B9E10035BA81 /* Game */,
@@ -149,6 +154,15 @@
 			);
 			name = "Game Over";
 			path = ..;
+			sourceTree = "<group>";
+		};
+		CE26A7301FE60DB7003F2994 /* Win */ = {
+			isa = PBXGroup;
+			children = (
+				CE26A72C1FE60DA6003F2994 /* WinScene.swift */,
+				CE26A72E1FE60DB0003F2994 /* WinScene.sks */,
+			);
+			name = Win;
 			sourceTree = "<group>";
 		};
 		CEB7A1AC1FE3A61200189B77 = {
@@ -253,6 +267,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE26A72F1FE60DB0003F2994 /* WinScene.sks in Resources */,
 				CEB7A1D61FE4546E00189B77 /* rudolph.atlas in Resources */,
 				CEB7A1C41FE3A61200189B77 /* Main.storyboard in Resources */,
 				CE11C2CF1FE4AB910035BA81 /* background music.wav in Resources */,
@@ -278,6 +293,7 @@
 				CEB7A1BF1FE3A61200189B77 /* GameScene.swift in Sources */,
 				CE11C2D51FE4B8D60035BA81 /* StartScene.swift in Sources */,
 				CE26A7261FE600C8003F2994 /* PhysicsCategory.swift in Sources */,
+				CE26A72D1FE60DA6003F2994 /* WinScene.swift in Sources */,
 				CEB7A1C11FE3A61200189B77 /* GameViewController.swift in Sources */,
 				CE26A7281FE609DE003F2994 /* GameOverScene.swift in Sources */,
 				CEB7A1B91FE3A61200189B77 /* AppDelegate.swift in Sources */,

@@ -32,6 +32,9 @@ class GameScene: SKScene {
     // button
     var homeButton: SKSpriteNode!
     
+    // win condition is to defeat 5 professors
+    var professorSpawnCount = 0
+    
     override func didMove(to view: SKView) {
         self.physicsWorld.contactDelegate = self
         self.physicsBody?.isDynamic = true
@@ -153,6 +156,11 @@ class GameScene: SKScene {
     }
     
     func spawnProfessor() {
+        if professorSpawnCount > 5 {
+            // win condition
+            win()
+        }
+        
         // set up the professor walking frames
         let professorAnimatedAtlas = SKTextureAtlas(named: "professor")
         var profWalkFrames = [SKTexture]()
@@ -198,6 +206,7 @@ class GameScene: SKScene {
         let moveActionWithDone = (SKAction.sequence([moveAction, doneAction]))
         
         professor.run(moveActionWithDone, withKey: "professor moved")
+        professorSpawnCount += 1
     }
     
     // starts the professor's walk animation
@@ -341,6 +350,23 @@ class GameScene: SKScene {
             view?.showsNodeCount = false
         }
     }
+    
+    func win() {
+        if view != nil {
+            if let scene = SKScene(fileNamed: "WinScene") {
+                // set the scale mode to scale to fit the window
+                scene.scaleMode = .aspectFill
+                
+                // present the scene
+                let transition:SKTransition = SKTransition.doorsCloseVertical(withDuration: 2)
+                self.view?.presentScene(scene, transition: transition)
+            }
+            
+            view?.ignoresSiblingOrder = true
+            view?.showsFPS = false
+            view?.showsNodeCount = false
+        }
+    }
 }
 
 extension GameScene: SKPhysicsContactDelegate {
@@ -370,11 +396,11 @@ extension GameScene: SKPhysicsContactDelegate {
         else if object.name == "professor" {
             destroy(object: object)
             destroy(object: projectile)
-            spawnProfessor()
+            if professorSpawnCount < 5 { spawnProfessor() }
         } else if object.name == "candy cane projectile" {
             destroy(object: object)
             destroy(object: projectile)
-            spawnProfessor()
+            if professorSpawnCount < 5 { spawnProfessor() }
         }
     }
     

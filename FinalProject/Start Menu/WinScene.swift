@@ -1,6 +1,6 @@
 import SpriteKit
 
-class GameOverScene: SKScene {
+class WinScene: SKScene {
     
     override func didMove(to view: SKView) {
         
@@ -13,7 +13,7 @@ class GameOverScene: SKScene {
             let pos = touch.location(in: self)
             let node = self.atPoint(pos)
             
-            // start game if play button is pressed
+            // go to home screen if home button pressed
             if node == homeButton {
                 if view != nil {
                     if let scene = SKScene(fileNamed: "StartScene") {
@@ -33,3 +33,4 @@ class GameOverScene: SKScene {
         }
     }
 }
+
