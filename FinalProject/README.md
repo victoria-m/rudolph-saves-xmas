@@ -18,7 +18,7 @@ The game has the following features:
 4. If you hit 5 professors, you win.
 
 ## Points
-**Total points: 45**
+**Total points: 46**
 I changed the way the points were allocated because after using SpriteKit I realized I wouldn’t be able to use the UIKit the way I had intended so I tailored the points allocation for SpriteKit.
 
 * Network request/response - 3 pts
@@ -29,6 +29,7 @@ I changed the way the points were allocated because after using SpriteKit I real
 * Custom SpriteKit drawing - 18 pts (6 things: rudolph, projectiles, professor,
 * home button, start game button, foreground, and background)
 * UIController/SKScenes - 5 pts (GameViewController, GameScene, StartScene, WinScene, GameOverScene)
+* Custom Class - 1 pt (PhysicsCategory)
 * Animations - 9 pts (rudolph walk, professor walk, throwing projectiles)
 
 ## Game Assets

@@ -99,7 +99,6 @@
 			isa = PBXGroup;
 			children = (
 				CEB7A1BE1FE3A61200189B77 /* GameScene.swift */,
-				CE26A7251FE600C8003F2994 /* PhysicsCategory.swift */,
 				CEB7A1BA1FE3A61200189B77 /* GameScene.sks */,
 			);
 			name = Game;
@@ -186,6 +185,7 @@
 			children = (
 				CE11C2CD1FE4AB220035BA81 /* Sounds */,
 				CEB7A1D01FE3A65200189B77 /* Supporting Files */,
+				CEF0840A1FE61713007E4ECE /* Models */,
 				CE11C2D91FE4B9CB0035BA81 /* Scenes */,
 				CE11C2DB1FE4BA280035BA81 /* Storyboards */,
 				CE11C2DF1FE4FF080035BA81 /* Readme */,
@@ -206,6 +206,14 @@
 				CEB7A1C71FE3A61200189B77 /* LaunchScreen.storyboard */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CEF0840A1FE61713007E4ECE /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CE26A7251FE600C8003F2994 /* PhysicsCategory.swift */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
