@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CE11C2CF1FE4AB910035BA81 /* background music.wav in Resources */ = {isa = PBXBuildFile; fileRef = CE11C2CE1FE4AB910035BA81 /* background music.wav */; };
-		CE11C2D11FE4AB960035BA81 /* shoot.wav in Resources */ = {isa = PBXBuildFile; fileRef = CE11C2D01FE4AB960035BA81 /* shoot.wav */; };
 		CE11C2D31FE4B2560035BA81 /* professor.atlas in Resources */ = {isa = PBXBuildFile; fileRef = CE11C2D21FE4B2550035BA81 /* professor.atlas */; };
 		CE11C2D51FE4B8D60035BA81 /* StartScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE11C2D41FE4B8D60035BA81 /* StartScene.swift */; };
 		CE11C2D71FE4B9750035BA81 /* StartScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = CE11C2D61FE4B9750035BA81 /* StartScene.sks */; };
@@ -28,11 +26,11 @@
 		CEB7A1C91FE3A61200189B77 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEB7A1C71FE3A61200189B77 /* LaunchScreen.storyboard */; };
 		CEB7A1D61FE4546E00189B77 /* rudolph.atlas in Resources */ = {isa = PBXBuildFile; fileRef = CEB7A1D51FE4546E00189B77 /* rudolph.atlas */; };
 		CED53FBB1FE720FA00D080CE /* professor2.atlas in Resources */ = {isa = PBXBuildFile; fileRef = CED53FBA1FE720FA00D080CE /* professor2.atlas */; };
+		CEFDB78F1FE85AAA0013BA3E /* shoot.wav in Resources */ = {isa = PBXBuildFile; fileRef = CEFDB78D1FE85AA90013BA3E /* shoot.wav */; };
+		CEFDB7901FE85AAA0013BA3E /* background music.wav in Resources */ = {isa = PBXBuildFile; fileRef = CEFDB78E1FE85AAA0013BA3E /* background music.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		CE11C2CE1FE4AB910035BA81 /* background music.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "background music.wav"; path = "../../../../../Pictures/Final Project Game/RenneCadeaux/RenneCadeauxProjetFini/background music.wav"; sourceTree = "<group>"; };
-		CE11C2D01FE4AB960035BA81 /* shoot.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = shoot.wav; path = "../../../../../Pictures/Final Project Game/RenneCadeaux/RenneCadeauxProjetFini/shoot.wav"; sourceTree = "<group>"; };
 		CE11C2D21FE4B2550035BA81 /* professor.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = professor.atlas; sourceTree = "<group>"; };
 		CE11C2D41FE4B8D60035BA81 /* StartScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartScene.swift; sourceTree = "<group>"; };
 		CE11C2D61FE4B9750035BA81 /* StartScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = StartScene.sks; sourceTree = "<group>"; };
@@ -54,6 +52,8 @@
 		CEB7A1CA1FE3A61200189B77 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CEB7A1D51FE4546E00189B77 /* rudolph.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = rudolph.atlas; sourceTree = "<group>"; };
 		CED53FBA1FE720FA00D080CE /* professor2.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = professor2.atlas; sourceTree = "<group>"; };
+		CEFDB78D1FE85AA90013BA3E /* shoot.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = shoot.wav; sourceTree = "<group>"; };
+		CEFDB78E1FE85AAA0013BA3E /* background music.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "background music.wav"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,15 +67,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		CE11C2CD1FE4AB220035BA81 /* Sounds */ = {
-			isa = PBXGroup;
-			children = (
-				CE11C2D01FE4AB960035BA81 /* shoot.wav */,
-				CE11C2CE1FE4AB910035BA81 /* background music.wav */,
-			);
-			name = Sounds;
-			sourceTree = "<group>";
-		};
 		CE11C2D81FE4B9B70035BA81 /* Start Menu */ = {
 			isa = PBXGroup;
 			children = (
@@ -185,7 +176,7 @@
 		CEB7A1B71FE3A61200189B77 /* FinalProject */ = {
 			isa = PBXGroup;
 			children = (
-				CE11C2CD1FE4AB220035BA81 /* Sounds */,
+				CEFDB7911FE85AAF0013BA3E /* Sounds */,
 				CEB7A1D01FE3A65200189B77 /* Supporting Files */,
 				CEF0840A1FE61713007E4ECE /* Models */,
 				CE11C2D91FE4B9CB0035BA81 /* Scenes */,
@@ -217,6 +208,15 @@
 				CE26A7251FE600C8003F2994 /* PhysicsCategory.swift */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		CEFDB7911FE85AAF0013BA3E /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				CEFDB78E1FE85AAA0013BA3E /* background music.wav */,
+				CEFDB78D1FE85AA90013BA3E /* shoot.wav */,
+			);
+			name = Sounds;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -279,18 +279,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE26A72F1FE60DB0003F2994 /* WinScene.sks in Resources */,
+				CEFDB7901FE85AAA0013BA3E /* background music.wav in Resources */,
 				CEB7A1D61FE4546E00189B77 /* rudolph.atlas in Resources */,
 				CEB7A1C41FE3A61200189B77 /* Main.storyboard in Resources */,
-				CE11C2CF1FE4AB910035BA81 /* background music.wav in Resources */,
 				CE11C2D71FE4B9750035BA81 /* StartScene.sks in Resources */,
 				CE26A72A1FE609F2003F2994 /* GameOverScene.sks in Resources */,
 				CEB7A1BB1FE3A61200189B77 /* GameScene.sks in Resources */,
 				CE11C2D31FE4B2560035BA81 /* professor.atlas in Resources */,
 				CED53FBB1FE720FA00D080CE /* professor2.atlas in Resources */,
 				CEB7A1C61FE3A61200189B77 /* Assets.xcassets in Resources */,
-				CE11C2D11FE4AB960035BA81 /* shoot.wav in Resources */,
 				CEB7A1C91FE3A61200189B77 /* LaunchScreen.storyboard in Resources */,
 				CE11C2DE1FE4FEFE0035BA81 /* README.md in Resources */,
+				CEFDB78F1FE85AAA0013BA3E /* shoot.wav in Resources */,
 				CEB7A1BD1FE3A61200189B77 /* Actions.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
