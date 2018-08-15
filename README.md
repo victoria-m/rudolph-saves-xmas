@@ -13,9 +13,6 @@ Rudolph the Red-Nosed Reindeer needs to keep his schedule free so he can help Sa
 ## Game Assets
 All assets used are royalty-free.
 
-* Christmas sprites and music
-    * [Renne Cadeaux TUTO by Dev Du Dimanche](https://developpeusedudimanche.itch.io/renne-cadeau-tuto)
-* Wizard sprite
-    * [The “**** Wasting Art” Art Package by Andrew Connelly](https://cog_software.itch.io/fwa-artpackage)
-* GUI
-    * [Button Asset Pack by adwitr](https://adwitr.itch.io/button-asset-pack)
+* Christmas sprites and music: [Renne Cadeaux TUTO by Dev Du Dimanche](https://developpeusedudimanche.itch.io/renne-cadeau-tuto)
+* Wizard sprite: [The “**** Wasting Art” Art Package by Andrew Connelly](https://cog_software.itch.io/fwa-artpackage)
+* Buttons: [Button Asset Pack by adwitr](https://adwitr.itch.io/button-asset-pack)
