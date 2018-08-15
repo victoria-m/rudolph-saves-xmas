@@ -1,13 +1,6 @@
 import SpriteKit
 import GameplayKit
 
-// references:
-    // animation: https://www.raywenderlich.com/89222/sprite-kit-animations-texture-atlases-swift
-// assets (royalty-free:
-    // christmas sprites: https://developpeusedudimanche.itch.io/renne-cadeau-tuto
-    // wizard sprite: https://cog_software.itch.io/fwa-artpackage
-    // GUI: https://adwitr.itch.io/button-asset-pack
-
 class GameScene: SKScene {
     // player sprite
     var rudolph: SKSpriteNode!
@@ -549,6 +542,6 @@ extension GameScene: SKPhysicsContactDelegate {
         object.removeFromParent()
         
         if object.name == "professor" { professorOnScreen = false }
-        else if object.name == "professor2" {professor2OnScreen = false }
+        else if object.name == "professor2" { professor2OnScreen = false }
     }
 }

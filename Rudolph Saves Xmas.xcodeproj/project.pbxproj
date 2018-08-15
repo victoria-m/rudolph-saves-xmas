@@ -34,13 +34,13 @@
 		CE11C2D21FE4B2550035BA81 /* professor.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = professor.atlas; sourceTree = "<group>"; };
 		CE11C2D41FE4B8D60035BA81 /* StartScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartScene.swift; sourceTree = "<group>"; };
 		CE11C2D61FE4B9750035BA81 /* StartScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = StartScene.sks; sourceTree = "<group>"; };
-		CE11C2DD1FE4FEFE0035BA81 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = FinalProject/README.md; sourceTree = SOURCE_ROOT; };
+		CE11C2DD1FE4FEFE0035BA81 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		CE26A7251FE600C8003F2994 /* PhysicsCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsCategory.swift; sourceTree = "<group>"; };
 		CE26A7271FE609DE003F2994 /* GameOverScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
 		CE26A7291FE609F2003F2994 /* GameOverScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameOverScene.sks; sourceTree = "<group>"; };
 		CE26A72C1FE60DA6003F2994 /* WinScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinScene.swift; sourceTree = "<group>"; };
 		CE26A72E1FE60DB0003F2994 /* WinScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = WinScene.sks; sourceTree = "<group>"; };
-		CEB7A1B51FE3A61200189B77 /* FinalProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinalProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEB7A1B51FE3A61200189B77 /* Rudolph Saves Xmas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Rudolph Saves Xmas.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEB7A1B81FE3A61200189B77 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEB7A1BA1FE3A61200189B77 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		CEB7A1BC1FE3A61200189B77 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
@@ -160,7 +160,7 @@
 		CEB7A1AC1FE3A61200189B77 = {
 			isa = PBXGroup;
 			children = (
-				CEB7A1B71FE3A61200189B77 /* FinalProject */,
+				CEB7A1B71FE3A61200189B77 /* Rudolph Saves Xmas */,
 				CEB7A1B61FE3A61200189B77 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -168,12 +168,12 @@
 		CEB7A1B61FE3A61200189B77 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				CEB7A1B51FE3A61200189B77 /* FinalProject.app */,
+				CEB7A1B51FE3A61200189B77 /* Rudolph Saves Xmas.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		CEB7A1B71FE3A61200189B77 /* FinalProject */ = {
+		CEB7A1B71FE3A61200189B77 /* Rudolph Saves Xmas */ = {
 			isa = PBXGroup;
 			children = (
 				CEFDB7911FE85AAF0013BA3E /* Sounds */,
@@ -185,11 +185,9 @@
 				CE11C2E01FE4FF1C0035BA81 /* View Controllers */,
 				CE11C2E11FE4FF2C0035BA81 /* Actions */,
 				CEB7A1CA1FE3A61200189B77 /* Info.plist */,
-				CE11C2D21FE4B2550035BA81 /* professor.atlas */,
-				CED53FBA1FE720FA00D080CE /* professor2.atlas */,
-				CEB7A1D51FE4546E00189B77 /* rudolph.atlas */,
+				CEC87EF72123A2D500583ED1 /* Sprites */,
 			);
-			path = FinalProject;
+			path = "Rudolph Saves Xmas";
 			sourceTree = "<group>";
 		};
 		CEB7A1D01FE3A65200189B77 /* Supporting Files */ = {
@@ -200,6 +198,16 @@
 				CEB7A1C71FE3A61200189B77 /* LaunchScreen.storyboard */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CEC87EF72123A2D500583ED1 /* Sprites */ = {
+			isa = PBXGroup;
+			children = (
+				CED53FBA1FE720FA00D080CE /* professor2.atlas */,
+				CEB7A1D51FE4546E00189B77 /* rudolph.atlas */,
+				CE11C2D21FE4B2550035BA81 /* professor.atlas */,
+			);
+			name = Sprites;
 			sourceTree = "<group>";
 		};
 		CEF0840A1FE61713007E4ECE /* Models */ = {
@@ -222,9 +230,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		CEB7A1B41FE3A61200189B77 /* FinalProject */ = {
+		CEB7A1B41FE3A61200189B77 /* Rudolph Saves Xmas */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CEB7A1CD1FE3A61200189B77 /* Build configuration list for PBXNativeTarget "FinalProject" */;
+			buildConfigurationList = CEB7A1CD1FE3A61200189B77 /* Build configuration list for PBXNativeTarget "Rudolph Saves Xmas" */;
 			buildPhases = (
 				CEB7A1B11FE3A61200189B77 /* Sources */,
 				CEB7A1B21FE3A61200189B77 /* Frameworks */,
@@ -234,9 +242,9 @@
 			);
 			dependencies = (
 			);
-			name = FinalProject;
+			name = "Rudolph Saves Xmas";
 			productName = FinalProject;
-			productReference = CEB7A1B51FE3A61200189B77 /* FinalProject.app */;
+			productReference = CEB7A1B51FE3A61200189B77 /* Rudolph Saves Xmas.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -246,7 +254,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = Victoria;
 				TargetAttributes = {
 					CEB7A1B41FE3A61200189B77 = {
@@ -255,7 +263,7 @@
 					};
 				};
 			};
-			buildConfigurationList = CEB7A1B01FE3A61200189B77 /* Build configuration list for PBXProject "FinalProject" */;
+			buildConfigurationList = CEB7A1B01FE3A61200189B77 /* Build configuration list for PBXProject "Rudolph Saves Xmas" */;
 			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -268,7 +276,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				CEB7A1B41FE3A61200189B77 /* FinalProject */,
+				CEB7A1B41FE3A61200189B77 /* Rudolph Saves Xmas */,
 			);
 		};
 /* End PBXProject section */
@@ -348,6 +356,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -355,6 +364,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -405,6 +415,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -412,6 +423,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -445,8 +457,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = FinalProject/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Rudolph Saves Xmas/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = umsl.FinalProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -459,8 +472,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = FinalProject/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Rudolph Saves Xmas/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = umsl.FinalProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -472,7 +486,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		CEB7A1B01FE3A61200189B77 /* Build configuration list for PBXProject "FinalProject" */ = {
+		CEB7A1B01FE3A61200189B77 /* Build configuration list for PBXProject "Rudolph Saves Xmas" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CEB7A1CB1FE3A61200189B77 /* Debug */,
@@ -481,7 +495,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CEB7A1CD1FE3A61200189B77 /* Build configuration list for PBXNativeTarget "FinalProject" */ = {
+		CEB7A1CD1FE3A61200189B77 /* Build configuration list for PBXNativeTarget "Rudolph Saves Xmas" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CEB7A1CE1FE3A61200189B77 /* Debug */,

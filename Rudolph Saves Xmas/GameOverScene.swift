@@ -2,10 +2,6 @@ import SpriteKit
 
 class GameOverScene: SKScene {
     
-    override func didMove(to view: SKView) {
-        
-    }
-    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let homeButton = childNode(withName: "home button")
         
@@ -21,7 +17,7 @@ class GameOverScene: SKScene {
                         scene.scaleMode = .aspectFill
                         
                         // present the scene
-                        let transition:SKTransition = SKTransition.doorsOpenVertical(withDuration: 2)
+                        let transition:SKTransition = SKTransition.fade(withDuration: 2)
                         self.view?.presentScene(scene, transition: transition)
                     }
                     
