@@ -1,7 +1,7 @@
-# Final Project
+# rudolph-saves-xmas
 
 ## Summary
-Rudolph the Red-Nosed Reindeer needs to keep his schedule free so he can help Santa deliver presents on Christmas. This means he needs to avoid those pesky professors who are trying to give him more homework. Help Rudolph save Christmas by pelting those pesky professors with candy canes!
+Rudolph the Red-Nosed Reindeer needs to keep his schedule free so he can help Santa deliver presents on Christmas. He needs to avoid his professors who are trying to give him more homework. Help Rudolph save Christmas by pelting those pesky professors with candy canes!
 
 ## How to Play
 1. Press the **Play** button
